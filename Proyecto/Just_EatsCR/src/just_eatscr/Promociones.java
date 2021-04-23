@@ -1,9 +1,9 @@
 /*
  * Promociones
  *
- * @version 1.0
+ * @version 1.01
  *
- * Fecha 17-03-2021
+ * Fecha 23-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,9 +16,11 @@ package just_eatscr;
  * encargan de distribuir a los clientes frecuentes vía correo.
  *   
  * @author     Brandon Ruiz
- * @version    1.00 17 Mar 2021
+ * @version    1.01 23 Abr 2021
  *  
 */
-public class Promociones {
-    
+public class Promociones 
+{
+   public String Tipo_Promo = "";
+   public double Descuento_Promo =0;  
 }
