@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version    1.00 17 Mar 2021 
- * @author     Brandon Ruiz       
+ * @version    1.00    17 Mar 2021 
+ * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
  * @see        Class
  * @see        Class#Cliente
  * @see        Class#Restaurantes
@@ -27,7 +27,8 @@ import javax.swing.JOptionPane;
  * 
  */
 
-public class Just_EatsCR {
+public class Just_EatsCR 
+{
 
     /**
      * Para poder ejecutar el programa, se necesita una serie de variables,
@@ -35,10 +36,11 @@ public class Just_EatsCR {
      * 
      * @param args the command line arguments
      */
- 
-    public static void main(String[] args) {
+      
+    public static void main(String[] args) 
+            
+    {
 
     }
-
+    
 }
-//prueba 2 
