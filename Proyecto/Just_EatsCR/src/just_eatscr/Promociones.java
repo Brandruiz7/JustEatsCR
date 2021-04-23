@@ -15,7 +15,7 @@ package just_eatscr;
  * de descuento, que los compañeros del departamento de Mercadeo se 
  * encargan de distribuir a los clientes frecuentes vía correo.
  *   
- * @author     Brandon Ruiz
+ * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez.
  * @version    1.01 23 Abr 2021
  *  
 */
