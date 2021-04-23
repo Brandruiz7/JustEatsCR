@@ -1,9 +1,9 @@
 /*
  * Repartidor
  *
- * @version 1.0
+ * @version 1.01
  *
- * Fecha 17-03-2021
+ * Fecha  23-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -14,10 +14,12 @@ package just_eatscr;
  * le asignará un repartidor que se ajuste a sus necesidades, tamaño y 
  * cantidad según sea el pedido del usuario.
  *   
- * @author     Brandon Ruiz
- * @version    1.00 17 Mar 2021
+ * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez.
+ * @version    1.01  23 Abr 2021
  * 
 */
-public class Repartidor {
-    
+public class Repartidor 
+{
+  private String ID_Repartidor = "";
+  private String Nombre = "";  
 }
