@@ -1,13 +1,15 @@
 /*
  * Restaurantes
  *
- * @version 1.01
+ * @version 1.03
  *
- * Fecha 17-03-2021
+ * Fecha 19-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
 package just_eatscr;
+
+import javax.swing.JOptionPane;
 
 /**
  * Esta es la clase Restaurante, se puede encontrar el comercio a elegir,
@@ -15,16 +17,127 @@ package just_eatscr;
  * pedido en un método.
  *   
  * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez 
- * @version    1.01    17 Mar 2021
+ * @version    1.03    19 Apr 2021
  * 
 */
 public class Restaurantes 
 {
-    public String ID_Restaurante = "";
-    public String Nombre = "";
-    public String Teléfono = "";
-    public String Menú = "";
-    public String Dirección = "";
+    private String ID_Restaurante = "";
+    private String Nombre = "";
+    private String Teléfono = "";
+    private String Menú = "";
+    private String Dirección = "";
+    
+    /**
+     * Este sería el constructor vacío de esta clase.
+     */
+    
+    public Restaurantes() 
+    {
+        
+    }    
+     
+    /** 
+     * Este es constructor se encargará de llenar los datos de los restaurantes
+     * @param Código        Este parámetro almacenará el codigo del restaurante.
+     * @param Nombre        Este parámetro almacenará el nombre del restaurante.
+     * @param Tele          Este parámetro almacenará el telefono de contacto de restaurante.      
+     * @param Direc         Este parámetro almacenará la direccion del restaurante.
+     */    
+    
+            
+    public Restaurantes (String Código, String Nombre, String Tele, String Direc)
+    {
+        this.ID_Restaurante=Código;
+        this.Nombre=Nombre;
+        this.Teléfono=Tele;
+        this.Dirección=Direc;
+    }
+    
+    /** 
+     * Este es el método que se encarga de almacenar la informacion del Restaurante.
+     * 
+     */
+    
+    public void restaurantes() {
+        Restaurantes infoRestaurantes[] = new Restaurantes[4];
+        
+        infoRestaurantes[0] = new  Restaurantes("R-pizza", "Pizza Hut", "22022789", "Zapote");
+        infoRestaurantes[1] = new  Restaurantes("R-burger", "Burger King", "22024032", "San José");
+        infoRestaurantes[2] = new  Restaurantes("R-taco", "Taco Bell", "22056030", "San José, Catedral");
+        infoRestaurantes[3] = new  Restaurantes("R-pops", "Helados Pops", "22066000", "Zapote");
+        
+        int Option=0;
+        
+        do {
+            Option = Integer.parseInt(JOptionPane.showInputDialog("Eliga el restaurante"
+                    + "\n1. Pizza Hut"
+                    + "\n2. Burger King"
+                    + "\n3. Taco Bell"
+                    + "\n4. Helados Pops"));
+            
+            switch(Option) {
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Direccion: " + infoRestaurantes[0].Dirección + "\nTeléfono: " + infoRestaurantes[0].Teléfono);
+                    break;
+                case 2:
+                    JOptionPane.showMessageDialog(null, "Direccion: " + infoRestaurantes[1].Dirección + "\nTeléfono: " + infoRestaurantes[1].Teléfono);
+                    break;
+                case 3:
+                    JOptionPane.showMessageDialog(null, "Direccion: " + infoRestaurantes[2].Dirección + "\nTeléfono: " + infoRestaurantes[2].Teléfono);
+                    break;
+                case 4:
+                    JOptionPane.showMessageDialog(null, "Direccion: " + infoRestaurantes[3].Dirección + "\nTeléfono: " + infoRestaurantes[3].Teléfono);
+                    break;
+                default:
+                    break;
+            }
+            
+        }while(Option!=0);
+    }
+    
+    /** 
+     * Getters y setters necesarios para la clase.
+     */
 
+    public String getID_Restaurante() {
+        return ID_Restaurante;
+    }
 
+    public void setID_Restaurante(String ID_Restaurante) {
+        this.ID_Restaurante = ID_Restaurante;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getTeléfono() {
+        return Teléfono;
+    }
+
+    public void setTeléfono(String Teléfono) {
+        this.Teléfono = Teléfono;
+    }
+
+    public String getMenú() {
+        return Menú;
+    }
+
+    public void setMenú(String Menú) {
+        this.Menú = Menú;
+    }
+
+    public String getDirección() {
+        return Dirección;
+    }
+
+    public void setDirección(String Dirección) {
+        this.Dirección = Dirección;
+    }
+    
 }
