@@ -89,21 +89,7 @@ public class Producto
      */
     
     public void Menú_Pizza_Hut () {
-        /*JOptionPane.showMessageDialog(null, "Pizza Hut Menu" 
-                + "\nCombo 1 -- Pizza de Pepperoni Lovers + Pepsi 2L -- Mediana -- Precio 9950"
-                + "\nCombo 2 -- Pizza Suprema + Pepsi 2L -- Mediana -- Precio 9950"
-                + "\nCombo 3 -- Pizza Jamón y Hongos + Pepsi 2L -- Mediana -- Precio 9950"
-                + "\nCombo 4 -- Pizza Chesse Lovers + Pepsi 1.6 0hz -- Personal -- Precio 2500"
-                + "\nCombo 5 -- Pizza Hawaiana + Pepsi 2L -- Grande -- Precio 11950"
-                + "\nCombo 6 -- Pizza Súper Suprema + Pepsi 2L -- Grande -- Precio 11950"
-                + "\nCombo 7 -- Pizza de Pepperoni Lovers + Pepsi 2L -- Grande -- Precio 11950"
-                + "\nCombo 8 -- Pizza Suprem+ Pepsi 1.6 0hz -- Personal -- Precio 2500"
-                + "\nCombo 9 -- Pizza Jamón y Hongos + Pepsi 1.6 0hz -- Personal -- Precio 2250"
-                + "\nCombo 10 -- Pizza Chesse Lovers + Pepsi 2L -- Mediana -- Precio 9950"
-                + "\nCombo 11 -- Pizza Hawaiana + Pepsi 2L -- Mediana -- Precio 9950"
-                + "\nCombo 12 -- Pizza Súper Suprema + Pepsi 2L -- Mediana -- Precio 9950");
-        */
-                 
+              
         Menú_Pizza[0] = new Producto("Combo 1","Pizza de Pepperoni Lovers + Pepsi 2L", "Mediana", 9950); 
         Menú_Pizza[1] = new Producto("Combo 2","Pizza Suprema + Pepsi 2L", "Mediana", 9950);         
         Menú_Pizza[2] = new Producto("Combo 3","Pizza Jamón y Hongos + Pepsi 2L", "Mediana", 9950);        
