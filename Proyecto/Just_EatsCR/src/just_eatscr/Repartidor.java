@@ -57,7 +57,8 @@ public class Repartidor
     }    
 
     /**
-     * En este método se van a guardar los datos del arreglo creado anteriormente.
+     * En este método se van a guardar los datos del arreglo creado anteriormente. 
+     * y va a mandar un repartidor cuando se haga una orden.
      */ 
     
     public void Lista_Repartidores_Registrados ()
@@ -88,8 +89,7 @@ public class Repartidor
     }
     
     /**
-     * Chicos mi idea era que el cliente no tenga que elegir el conductor sino que se elija uno random,
-     * pero la verdad no sé como hacerle...
+     * Metodo que ejecuta la selleccion del rapartidor de manera aleatoria.
      */ 
     
     public void Elegir_Random ()
@@ -100,6 +100,10 @@ public class Repartidor
                                                + "\nPlaca: " + Repartidores_APP[NúmeroRandom].ID_Repartidor
                                                + "\nNombre: " + Repartidores_APP[NúmeroRandom].Nombre);
     }
+    
+    /** 
+     * Getters y setters necesarios para la clase.
+     */
    
     public String getID_Repartidor() 
     {
