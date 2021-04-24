@@ -1,9 +1,9 @@
 /*
  * Factura
  *
- * @version 1.02
+ * @version 1.03
  *
- * Fecha 01-04-2021
+ * Fecha 05-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -30,8 +30,8 @@ public class Factura
     private String Codigo_Factura = "";
     private double Sub_Total=0;
     private double Total=0;
-    public String Decisión="";
-    public double Saldo=0;
+    public String Eleccion="";
+    public double Compra=0;
 
     /** 
      * Este es constructor se encargará de traer lo que el cliente decidió comprar
@@ -39,11 +39,20 @@ public class Factura
      * @param Saldo         Este parámetro almacenará el precio final.
      */    
     
-    public Factura (String Decisión, double Saldo)
+    
+    Producto Menú_Pizza[] = new Producto[12]; 
+    Producto Menú_TacoBell[] = new Producto[10];
+    Producto Menú_BurguerKing[] = new Producto[10];
+    Producto Menú_Pops[] = new Producto[10];
+    
+    public Factura (String Eleccion, double Saldo, double Sub_Total, double Total, String Codigo_Factura)
     {
-        this.Decisión=Decisión; //Compañeros acá podemos guardar el nombre del combo que escogió el cliente
-        this.Saldo=Saldo; // Y acá el precio
-    }      
+        this.Eleccion=Eleccion; //Compañeros acá podemos guardar el nombre del combo que escogió el cliente
+        this.Compra=Compra; // Y acá el precio
+        this.Codigo_Factura=Codigo_Factura;
+        this.Sub_Total=Sub_Total;
+        this.Total=Total;
+    }     
     
     /** 
      * Este es el método que se encarga del cálculo del Impuesto del IVA
@@ -55,7 +64,7 @@ public class Factura
     {
         double IVA=0.13;
     
-        Sub_Total=Saldo*IVA;
+        Sub_Total=Compra*IVA;
         
     }
 
@@ -66,7 +75,7 @@ public class Factura
     
     public void Total ()
     {
-        Total=Saldo+Sub_Total;
+        Total=Compra+Sub_Total;
         
     }
 
@@ -82,9 +91,9 @@ public class Factura
                                          +"\nGracias por usar nuestro servicio"
                                          +"\nEl desglose es el siguiente"
                                          +"\nEl pedido realizado fue:\n"
-                                         +Decisión
+                                         +Eleccion
                                          +"\nDicho costo de servicio es de:\n"
-                                         +"\nSub Total: "+Saldo
+                                         +"\nSub Total: "+Compra
                                          +"\nEl agregado del IVA: "+Sub_Total
                                          +"\nEl Saldo Final es de: "+Total);     
     }
@@ -121,3 +130,4 @@ public class Factura
         this.Total = Total;
     }
 }
+
