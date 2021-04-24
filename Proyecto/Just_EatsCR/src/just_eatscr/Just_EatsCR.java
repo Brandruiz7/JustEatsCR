@@ -1,5 +1,5 @@
 /*
- * @(#)Just_EatsCR.java        1.07  Fecha 08/04/2021
+ * @(#)Just_EatsCR.java        1.09  Fecha 22/04/2021
  * 
  * Copyright (c) "Preguntar a la profe"
  */
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version     1.07    08 Apr 2021 
+ * @version     1.09    22 Apr 2021 
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
  * @see         Class
  * @see         Class#Cliente
@@ -54,9 +54,13 @@ public class Just_EatsCR
     
     public void Elección_Restaurante () {
         Producto ClassProducto = new Producto();
-        Repartidor ElegirRepartidor = new Repartidor ();
+        Repartidor ClassElegirRepartidor = new Repartidor ();
+        Restaurantes ClassRestaurante = new Restaurantes();
+        Factura ClassFactura;
+        Promociones ClassPromo = new Promociones();
         
         int Elección;
+        boolean Verificar = false;
         do {
             Elección=Integer.parseInt(JOptionPane.showInputDialog
                                 ("Por favor, elija el restaurante de su preferecia:"
@@ -64,9 +68,11 @@ public class Just_EatsCR
                                 + "\n2. Taco Bell."
                                 + "\n3. Pops."
                                 + "\n4. Burguer King."
+                                + "\n   Opciones del pedido!"
                                 + "\n5. Revisar Pedido"
                                 + "\n6. Pagar pedido"
-                                + "\n0. 0 para ir Atras"
+                                + "\n7. Contacto Restaurantes"
+                                + "\n0. 0 para ir Atras y borrer pedido"
                                 + "\n"
                                 + ""
                                 + ""
@@ -88,13 +94,22 @@ public class Just_EatsCR
                     ClassProducto.mostrarPedido();
                     break;
                 case 6:
-                    ClassProducto.Suma();
-                    ElegirRepartidor.Lista_Repartidores_Registrados();
+                    ClassFactura = new Factura(ClassPromo.Descuentos(ClassProducto.Suma()));
+                    ClassFactura.metodoPago();
+                    ClassFactura.Cálculo();
+                    ClassFactura.Facturacion();
+                    ClassElegirRepartidor.Lista_Repartidores_Registrados();
+                    Verificar = true;
+                    break;
+                case 7:
+                    ClassRestaurante.restaurantes();
                     break;
                 default:
+                    
                     break;                    
             }
-        }while(Elección!=0);
+        }while((Elección!=0) && (Verificar == false));
+        
     }
         
     /** 
@@ -106,7 +121,7 @@ public class Just_EatsCR
     public void inicioSesion(){
         //Realizamos las instancias de las clases necesarias.
         Cliente ClassCliente = new Cliente();           
-        Just_EatsCR MenElec = new Just_EatsCR();        
+                
         
         int Opcion=0;
         
