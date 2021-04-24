@@ -9,7 +9,6 @@
  */
 package just_eatscr;
 
-import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
