@@ -1,5 +1,5 @@
 /*
- * @(#)Just_EatsCR.java        1.03  Fecha 03/04/2021
+ * @(#)Just_EatsCR.java        1.04  Fecha 04/04/2021
  * 
  * Copyright (c) "Preguntar a la profe"
  */
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version    1.01    04 Apr 2021 
+ * @version    1.04    04 Apr 2021 
  * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
  * @see        Class
  * @see        Class#Cliente
@@ -62,17 +62,24 @@ public class Just_EatsCR
     
     public void Elección_Restaurante () {
         Producto ClassProducto = new Producto();
+        Cliente ClassCliente = new Cliente();
         
         int Elección;
         do
         {
             Elección=Integer.parseInt(JOptionPane.showInputDialog
-                        ("Por favor, elija el restaurante de su preferecia:"
-                      +"\n1. Pizza Hut."
-                      +"\n2. Taco Bell."
-                      +"\n3. Pops."
-                      +"\n4. Burguer King."
-                      +"\n0. 0 para ir Atras"));
+                                ("Por favor, elija el restaurante de su preferecia:"
+                                + "\n1. Pizza Hut."
+                                + "\n2. Taco Bell."
+                                + "\n3. Pops."
+                                + "\n4. Burguer King."
+                                + "\n5. Revisar Pedido"
+                                + "\n6. Cancelar pedido"
+                                + "\n0. 0 para ir Atras"
+                                + "\n"
+                                + ""
+                                + ""
+                                + "\n Nota: solo se permiten 4 pedidos a la vez"));
             
             switch(Elección)
             {
@@ -91,6 +98,11 @@ public class Just_EatsCR
                     
                 case 4:
                     ClassProducto.Menú_Burguer_King();
+                    break;
+                case 5:
+                    ClassProducto.mostrarPedido();
+                    break;
+                case 6:
                     break;
                     
                 default:
