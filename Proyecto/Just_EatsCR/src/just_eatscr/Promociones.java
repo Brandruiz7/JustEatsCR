@@ -3,7 +3,7 @@
  *
  * @version 1.03
  *
- * Fecha 05-04-2021
+ * Fecha 06-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -17,55 +17,49 @@ import javax.swing.JOptionPane;
  * de descuento, que los compañeros del departamento de Mercadeo se 
  * encargan de distribuir a los clientes frecuentes vía correo.
  *   
- * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version    1.01    17 Mar 2021
- *  
+ * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernández
+ * @version     1.03    6 Abril 2021
+ * @see         Class
+ * @see         Factura
+ * 
 */
 public class Promociones 
-{
-    public String Tipo_Promo = "";
-    public double Descuento_Promo; 
-    public double Compra;
-   
+{ 
+    public double Compra=0;
+
+    /**
+     * Este sería el constructor que nos permite traer datos de la clase Producto.
+     */
     
-    
-  
-  
-    public Promociones ( String Tipo_Promo, double Descuento_Promo, double Compra)
+   public Promociones (double Compra)
     {
-        this.Tipo_Promo=Tipo_Promo;
-        this.Descuento_Promo=Descuento_Promo;
         this.Compra=Compra;
         
     } 
     
-   
+ 
     /**
      * En este método 
      * se le aplicará un descuento de 15% al cliente, si la compra que ha realizado es mayor 
      * a ¢10.000 
-     * Si la compra es menor a 10000 tendra 0% de descuento
+     * @param Saldo         Este parámetro trae información de otra clase ya creada para 
+     *                      manipular el método de descuentos.
      */
     
- public void Descuentos()
+ public void Descuentos(double Saldo)
  {
-   double Compra = Double.parseDouble(JOptionPane.showInputDialog("digite el monto a pagar"));
+     
+    Compra = Saldo;
 
-  if(Compra < 10000)
-  {
-     Compra -=(Compra*0); 
+  if(Compra > 10000)
+  {    
+    Compra -=(Compra*0.15); 
+    JOptionPane.showMessageDialog(null," Felicidades ha ganado un descuento, su nuevo saldo es: ¢"+ Compra);      
   }  
-  
-  else if(Compra > 10000)
-  {
-      Compra -=(Compra*0.15);
-  }
-  else
-   {
-     Compra=Compra;
-   }
-   
-  JOptionPane.showMessageDialog(null," El monto a pagar con el descuento aplicado es: "+Compra );
+        Factura PasoFinal = new Factura (Compra);          
+        PasoFinal.Cálculo();
+        PasoFinal.Factura();
+        
  }
 
 }
