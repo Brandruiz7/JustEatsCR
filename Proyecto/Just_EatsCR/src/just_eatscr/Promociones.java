@@ -29,6 +29,8 @@ public class Promociones
 
     /**
      * Este sería el constructor que nos permite traer datos de la clase Producto.
+     * @param Compra            Este parámetro se utilizará para trasladar el monto del Sub Total
+     *                          a la variable compra, para poder ejecutar el método de descuento.
      */
     
    public Promociones (double Compra)
