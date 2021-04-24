@@ -1,9 +1,9 @@
 /*
  * Cliente
  *
- * @version 1.05
+ * @version 1.06
  *
- * Fecha 03-04-2021
+ * Fecha 08-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * el usuario y datos de inicio de Sesión en la app Just Eats.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.05    03 de Abril 2021
+ * @version     1.06    08 de Abril 2021
  * 
 */
 
@@ -37,6 +37,7 @@ public class Cliente
     private String Ubicación = "";
     private String Correo = "";
     private String Teléfono = "";
+    private int Contador=1;
     
     Cliente DatosUser[] = new Cliente [3];
     
@@ -86,17 +87,21 @@ public class Cliente
         String Correo;
         String Teléfono; 
         
-        Nombre = JOptionPane.showInputDialog("Digite su Nombre: ");
-        Usuario = JOptionPane.showInputDialog("Digite su alias de Usuario: ");
-        Password = JOptionPane.showInputDialog("Digite su Password: ");
-        Ubicacion = JOptionPane.showInputDialog("Digite su Ubicacion: ");
-        Correo = JOptionPane.showInputDialog("Digite su Correo: ");
-        Teléfono = JOptionPane.showInputDialog("Digite su Teléfono: ");
-        
-        
-        
-        DatosUser[ID_Cliente+1] = new Cliente(Nombre, Usuario, Password, Ubicacion, Correo, Teléfono );
-        ID_Cliente++;
+        if(Contador != DatosUser.length) {
+            
+            Nombre = JOptionPane.showInputDialog("Digite su Nombre: ");
+            Usuario = JOptionPane.showInputDialog("Digite su alias de Usuario: ");
+            Password = JOptionPane.showInputDialog("Digite su Password: ");
+            Ubicacion = JOptionPane.showInputDialog("Digite su Ubicacion: ");
+            Correo = JOptionPane.showInputDialog("Digite su Correo: ");
+            Teléfono = JOptionPane.showInputDialog("Digite su Teléfono: ");
+            
+            DatosUser[ID_Cliente+1] = new Cliente(Nombre, Usuario, Password, Ubicacion, Correo, Teléfono );
+            Contador++;
+            ID_Cliente++;
+        }else {
+            JOptionPane.showMessageDialog(null,"Maximo de usuarios registrados alcanzada");
+        }
     }
     
     /** 
@@ -104,22 +109,22 @@ public class Cliente
      * @return Verificacion        Esta variable guardara un valor 1 necesario para seguir el procesos  
     */
     
-    public int iniciarSesion() {
+    public boolean iniciarSesion() {
         DatosUser[0]= new Cliente("Alan","Alan","alan12","Los Yoses","Alan12@hotmail.com","87943560");      //Usuario previamente registrado
         String User;
         String Pass;
-        int Verificacion = 0;
+        boolean Verificacion = false;
         
         User = JOptionPane.showInputDialog("Digite su alias de Usuario: ");
         Pass = JOptionPane.showInputDialog("Digite su Password: ");
         
-        for(int i = 0; i < DatosUser.length; i++) {
+        for(int i = 0; i < Contador; i++) {
             if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {
                 JOptionPane.showMessageDialog(null,"Correcto");
                 i = DatosUser.length;
-                Verificacion=1;
+                Verificacion=true;
                
-            }else if((i+1) == DatosUser.length ) {
+            }else if((i+1) == Contador ) {
                 JOptionPane.showMessageDialog(null,"Usario o Contraseña incorrectod"
                                             + "\nIngrese nuevamente");
             }
@@ -150,28 +155,27 @@ public class Cliente
         int Option=0;
         
         do {
-        Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
+            Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
                                                            + "\nSeleccione un opción."
                                                            + "\n1. Realizar pedido"
                                                            + "\n2. Realizar reclamo" 
                                                            + "\n3. Realizar sugerencia" 
                                                            + "\n0. Cerrar sesion"));
-        switch(Option) {
-            case 1:
-                MenElec.Elección_Restaurante();
-                break;
-            case 2:
-                ClassCliente.realizarReclamo();
-                break;
-            case 3:
-                ClassCliente.realizarSugerencia();
-                break;
-            default:
-                break;
-        }
+            switch(Option) {
+                case 1:
+                    MenElec.Elección_Restaurante();
+                    break;
+                case 2:
+                    ClassCliente.realizarReclamo();
+                    break;
+                case 3:
+                    ClassCliente.realizarSugerencia();
+                    break;
+                default:
+                    break;
+            }
         } while(Option!=0);
         return Option;
-        
     }
     
     /** 
@@ -186,26 +190,26 @@ public class Cliente
         int    Option; 
         
         do {
-        Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
+            Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
                                                            +"\nGracias por usar nuestro servicio"
                                                            +"\nPor favor indicar tipo de reclamo"
                                                            +"\n1. Recalmo sobre producto" 
                                                            +"\n2. Reclamo sobre pedido" 
                                                            +"\n0. 0 para ir Atras"));
-        switch(Option) {
-            case 1:
-                Recl_Producto = JOptionPane.showInputDialog("Indique Reclamo de Preducto");
-                JOptionPane.showMessageDialog(null, "Su reclamo sera tomado"
+            switch(Option) {
+                case 1:
+                    Recl_Producto = JOptionPane.showInputDialog("Indique Reclamo de Preducto");
+                    JOptionPane.showMessageDialog(null, "Su reclamo sera tomado"
                                                   + "\n                     Gracias");
-                break;
-            case 2:
-                Recl_Pedido = JOptionPane.showInputDialog("Indique Reclamo de Pedido");
-                JOptionPane.showMessageDialog(null, "Su reclamo sera tomado"
+                    break;
+                case 2:
+                    Recl_Pedido = JOptionPane.showInputDialog("Indique Reclamo de Pedido");
+                    JOptionPane.showMessageDialog(null, "Su reclamo sera tomado"
                                                   + "\n                   Gracias");
-                break;
-            default:
-                break;
-        }
+                    break;
+                default:
+                    break;
+            }
         } while(Option!=0);
     }
     
@@ -294,5 +298,4 @@ public class Cliente
     }
 
   
-}    
-  
+}
