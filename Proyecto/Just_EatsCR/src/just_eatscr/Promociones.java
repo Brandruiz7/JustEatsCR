@@ -1,9 +1,9 @@
 /*
  * Promociones
  *
- * @version 1.03
+ * @version 1.04
  *
- * Fecha 06-04-2021
+ * Fecha 19-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -18,14 +18,23 @@ import javax.swing.JOptionPane;
  * encargan de distribuir a los clientes frecuentes vía correo.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernández
- * @version     1.03    6 Abril 2021
+ * @version     1.04    19 Abril 2021
  * @see         Class
  * @see         Factura
  * 
 */
 public class Promociones 
 { 
-    public double Compra=0;
+    private double Compra=0;
+    
+    /**
+     * Este sería el constructor vacío de esta clase.
+     */ 
+    
+    public Promociones ()
+    {
+        
+    }
 
     /**
      * Este sería el constructor que nos permite traer datos de la clase Producto.
@@ -46,22 +55,37 @@ public class Promociones
      * a ¢10.000 
      * @param Saldo         Este parámetro trae información de otra clase ya creada para 
      *                      manipular el método de descuentos.
+     * @return Compra       Retornamos el valor el la variable Compra luego del calculo.
      */
     
- public void Descuentos(double Saldo)
- {
-     
-    Compra = Saldo;
-
-  if(Compra > 10000)
-  {    
-    Compra -=(Compra*0.15); 
-    JOptionPane.showMessageDialog(null," Felicidades ha ganado un descuento, su nuevo saldo es: ¢"+ Compra);      
-  }  
-        Factura PasoFinal = new Factura (Compra);          
-        PasoFinal.Cálculo();
-        PasoFinal.Factura();
+    public double Descuentos(double Saldo)
+    {
+        Compra = Saldo;
         
- }
+        if(Compra > 10000)
+        {    
+            Compra -=(Compra*0.15); 
+            JOptionPane.showMessageDialog(null," Felicidades ha ganado un descuento, su nuevo saldo es: ¢"+ Compra);      
+        }
+        
+        /*
+        Factura PasoFinal = new Factura (Compra);          
+        PasoFinal.metodoPago();
+        PasoFinal.Cálculo();
+        PasoFinal.Facturacion();
+        */
+        return Compra;
+    }
 
+    /** 
+     * Getters y setters necesarios para la clase.
+     */
+    
+    public double getCompra() {
+        return Compra;
+    }
+
+    public void setCompra(double Compra) {
+        this.Compra = Compra;
+    }
 }
