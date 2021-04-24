@@ -3,7 +3,7 @@
  *
  * @version 1.05
  *
- * Fecha 03-04-2021
+ * Fecha 04-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * el usuario y datos de inicio de Sesión en la app Just Eats.
  *   
  * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version    1.05    03 de Abril 2021
+ * @version    1.05    04 de Abril 2021
  * 
 */
 
@@ -37,13 +37,10 @@ public class Cliente
     private String Ubicación = "";
     private String Correo = "";
     private String Teléfono = "";
+    private int Contador=1;
     
     Cliente DatosUser[] = new Cliente [3];
-    
-    
-    
-    
-    
+       
     public Cliente()
     {
         
@@ -93,9 +90,8 @@ public class Cliente
         Correo = JOptionPane.showInputDialog("Digite su Correo: ");
         Teléfono = JOptionPane.showInputDialog("Digite su Teléfono: ");
         
-        
-        
         DatosUser[ID_Cliente+1] = new Cliente(Nombre, Usuario, Password, Ubicacion, Correo, Teléfono );
+        Contador++;
         ID_Cliente++;
     }
     
@@ -113,13 +109,13 @@ public class Cliente
         User = JOptionPane.showInputDialog("Digite su alias de Usuario: ");
         Pass = JOptionPane.showInputDialog("Digite su Password: ");
         
-        for(int i = 0; i < DatosUser.length; i++) {
+        for(int i = 0; i < Contador; i++) {
             if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {
                 JOptionPane.showMessageDialog(null,"Correcto");
                 i = DatosUser.length;
                 Verificacion=1;
                
-            }else if((i+1) == DatosUser.length ) {
+            }else if((i+1) == Contador ) {
                 JOptionPane.showMessageDialog(null,"Usario o Contraseña incorrectod"
                                             + "\nIngrese nuevamente");
             }
@@ -135,7 +131,6 @@ public class Cliente
         for(int i = 0; i < DatosUser.length; i++) {
             JOptionPane.showMessageDialog(null, "User data " + (i+1) + " es: " + "\nNombre:" + DatosUser[i].Nombre + "\nCorreo" + DatosUser[i].Correo );
         }
-        
     }
     
     /** 
@@ -171,7 +166,6 @@ public class Cliente
         }
         } while(Option!=0);
         return Option;
-        
     }
     
     /** 
