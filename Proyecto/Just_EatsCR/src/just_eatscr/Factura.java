@@ -30,38 +30,44 @@ public class Factura
     private String Codigo_Factura = "";
     private double Sub_Total=0;
     private double Total=0;
+    public String Decisión="";
+    public double Saldo=0;
 
+    /** 
+     * Este es constructor se encargará de traer lo que el cliente decidió comprar
+     * @param Decisión      Este parámetro almacenará la elección.
+     * @param Saldo         Este parámetro almacenará el precio final.
+     */    
+    
+    public Factura (String Decisión, double Saldo)
+    {
+        this.Decisión=Decisión; //Compañeros acá podemos guardar el nombre del combo que escogió el cliente
+        this.Saldo=Saldo; // Y acá el precio
+    }      
+    
     /** 
      * Este es el método que se encarga del cálculo del Impuesto del IVA
      * tomando en cuenta el Sub Total de la cuenta.
-     * @param Saldo         Se refiere al total en saldo bruto de la compra
-     * @return Sub_Total    Devuelve el saldo junto con el impuesto del IVA
-     */
+     * 
+     */ 
     
-    public static double Calculo_IVA (double Saldo)
+    public void Calculo_IVA ()
     {
         double IVA=0.13;
-        double Sub_Total;
-        
+    
         Sub_Total=Saldo*IVA;
         
-        return Sub_Total;
     }
 
     /** 
      * Este es el método que se encarga del cálculo Total de la cuenta
-     * @param Total_IVA     Se refiere al saldo anterior junto con el IVA
-     * @param Saldo         Se refiere a el saldo bruto de la compra
-     * @return Total        Devuelve el saldo total de la compra.
+     *
      */
     
-    public static double Total (double Total_IVA, double Saldo)
+    public void Total ()
     {
-        double Total;
+        Total=Saldo+Sub_Total;
         
-        Total=Total_IVA+Saldo;
-        
-        return Total;
     }
 
     /** 
@@ -76,12 +82,13 @@ public class Factura
                                          +"\nGracias por usar nuestro servicio"
                                          +"\nEl desglose es el siguiente"
                                          +"\nEl pedido realizado fue:\n"
+                                         +Decisión
                                          +"\nDicho costo de servicio es de:\n"
-                                         +"\nSub Total: "
-                                         +"\nEl agregado del IVA: "
-                                         +"\nEl Saldo Final es de: ");     
+                                         +"\nSub Total: "+Saldo
+                                         +"\nEl agregado del IVA: "+Sub_Total
+                                         +"\nEl Saldo Final es de: "+Total);     
     }
-        
+    
     public String getCodigo_Factura() 
     {
         return Codigo_Factura;
