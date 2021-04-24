@@ -1,9 +1,9 @@
 /*
  * Producto
  *
- * @version 1.05
+ * @version 1.07
  *
- * Fecha 08-04-2021
+ * Fecha 22-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * así como la cantidad, tamaño y el precio según sea el caso.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.05    08 de abril 2021
+ * @version     1.07    22 de abril 2021
  * @see         Class
  * @see         Promociones.
  * @see         Descuentos.
@@ -28,11 +28,8 @@ public class Producto
     private String Tamaño="";
     private double Precio=0;
     private int Contador=0;
+    public double Suma=0; 
     
-    int i=0;
-    double Suma=0; 
-    
-    Producto Pedidos[] = new Producto[3];
     Producto Menú_Pizza[] = new Producto[12]; 
     Producto Menú_TacoBell[] = new Producto[10];
     Producto Menú_BurguerKing[] = new Producto[10];
@@ -89,7 +86,8 @@ public class Producto
      */
     
     public void Menú_Pizza_Hut () {
-              
+
+                 
         Menú_Pizza[0] = new Producto("Combo 1","Pizza de Pepperoni Lovers + Pepsi 2L", "Mediana", 9950); 
         Menú_Pizza[1] = new Producto("Combo 2","Pizza Suprema + Pepsi 2L", "Mediana", 9950);         
         Menú_Pizza[2] = new Producto("Combo 3","Pizza Jamón y Hongos + Pepsi 2L", "Mediana", 9950);        
@@ -210,15 +208,17 @@ public class Producto
         
         int Opcion;
         
-        Opcion = Integer.parseInt(JOptionPane.showInputDialog("Pops Menu"
+        
+        
+        if(Contador < 4) {
+            Opcion = Integer.parseInt(JOptionPane.showInputDialog("Pops Menu"
                             + "\nCombo 1 --Milk Shake Clásica--Regular-- ¢2400 "
                             + "\nCombo 2 --Banana Split Cup Clásica--Regular-- ¢2350 "
                             + "\nCombo 3 --Sundae Clásico--Regular--¢2100 "
                             + "\nCombo 4 --Churchill Shake--Regular-- ¢2350"
                             + "\nCombo 5 --Jelly Pops--Regular-- ¢1900 "
                             + "\nDigite Numero de combo:"));
-        
-        if(Contador < 4) {
+            
             JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_Pops[(Opcion-1)].Codigo
                                      + "\nPrecio a cancelar: " + Menú_Pops[(Opcion-1)].Precio);
             Eleccion[Contador] = new Producto(Menú_Pops[Opcion-1].Codigo, Menú_Pops[Opcion-1].Tipo, Menú_Pops[Opcion-1].Tamaño, Menú_Pops[Opcion-1].Precio);
@@ -233,11 +233,14 @@ public class Producto
 
     /**
      * Este método ayuda al traslado de información, con ello podemos calcular el descuento.
+     * @return Suma         Acá se retorna el valor en la variable Suma
      */
-    public void Suma ()
+    public double Suma ()
     {    
-        Promociones Verificar = new Promociones(Suma);      
-        Verificar.Descuentos(Suma);
+        //Promociones Verificar = new Promociones(Suma);      
+        //Verificar.Descuentos(Suma);
+        
+        return Suma;
     }
     
     /** 
