@@ -1,9 +1,9 @@
 /*
  * Repartidor
  *
- * @version 1.04
+ * @version 1.05
  *
- * Fecha 06-04-2021
+ * Fecha 08-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * cantidad según sea el pedido del usuario.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez  
- * @version     1.04    06 de abril 2021
+ * @version     1.05    08 de abril 2021
  * 
 */
 public class Repartidor 
@@ -33,7 +33,7 @@ public class Repartidor
     private String Nombre = ""; 
     public int NúmeroRandom=0;
     
-    Repartidor Repartidores_APP [] = new Repartidor[9];
+    Repartidor Repartidores_APP [] = new Repartidor[10];
     
     /**
      * Este sería el constructor vacío de esta clase.
@@ -72,8 +72,20 @@ public class Repartidor
        Repartidores_APP [6]= new Repartidor("I39H1S", "Tatiana");
        Repartidores_APP [7]= new Repartidor("B8GF32", "Harry");       
        Repartidores_APP [8]= new Repartidor("JHG345", "Keytlin");       
-       Repartidores_APP [9]= new Repartidor("GN32V1", "Bryan");       
+       Repartidores_APP [9]= new Repartidor("GN32V1", "Bryan");
+
+       NúmeroRandom= (int)(Math.random()*(Repartidores_APP.length));     //Acá elige un número random entre 0 y el total de entradas en el arreglo   
+       JOptionPane.showMessageDialog(null, "Se le ha asignado un repartidor\n"
+                                               + "\nPlaca: " + Repartidores_APP[NúmeroRandom].ID_Repartidor
+                                               + "\nNombre: " + Repartidores_APP[NúmeroRandom].Nombre);       
        
+       /*
+       Random rand = new Random();
+       int i = rand.nextInt(9);
+       JOptionPane.showMessageDialog(null, "Se le ha asignado un repartidor\n"
+                + "\nPlaca: " + Repartidores_APP[i].ID_Repartidor
+                + "\nNombre: " + Repartidores_APP[i].Nombre);
+       */
     }
     
     /**
@@ -83,9 +95,11 @@ public class Repartidor
     
     public void Elegir_Random ()
     {
+        
         NúmeroRandom= (int)(Math.random()*(Repartidores_APP.length));     //Acá elige un número random entre 0 y el total de entradas en el arreglo   
             JOptionPane.showMessageDialog(null, "Se le ha asignado un repartidor\n"
-                                               +Repartidores_APP[NúmeroRandom]);
+                                               + "\nPlaca: " + Repartidores_APP[NúmeroRandom].ID_Repartidor
+                                               + "\nNombre: " + Repartidores_APP[NúmeroRandom].Nombre);
     }
    
     public String getID_Repartidor() 
@@ -107,5 +121,14 @@ public class Repartidor
     {
         this.Nombre = Nombre;
     }
+
+    public Repartidor[] getRepartidores_APP() {
+        return Repartidores_APP;
+    }
+
+    public void setRepartidores_APP(Repartidor[] Repartidores_APP) {
+        this.Repartidores_APP = Repartidores_APP;
+    }
+    
 
 }
