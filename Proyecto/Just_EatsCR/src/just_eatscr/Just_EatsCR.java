@@ -1,5 +1,5 @@
 /*
- * @(#)Just_EatsCR.java        1.06  Fecha 06/04/2021
+ * @(#)Just_EatsCR.java        1.07  Fecha 08/04/2021
  * 
  * Copyright (c) "Preguntar a la profe"
  */
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version     1.06    06 Apr 2021 
+ * @version     1.07    08 Apr 2021 
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
  * @see         Class
  * @see         Class#Cliente
@@ -55,61 +55,48 @@ public class Just_EatsCR
     public void Elección_Restaurante () {
         Producto ClassProducto = new Producto();
         Repartidor ElegirRepartidor = new Repartidor ();
+        
         int Elección;
-        int Repetición=0;
-        
-        if (Repetición<4)
-        {
-            do
-            {
-                Elección=Integer.parseInt(JOptionPane.showInputDialog
-                        ("Por favor, elija el restaurante de su preferecia:"
-                      +"\n1. Pizza Hut."
-                      +"\n2. Taco Bell."
-                      +"\n3. Pops."
-                      +"\n4. Burguer King."
-                      +"\n0. 0 para ir Atras"));
-            
-                switch(Elección)
-                {
-                    case 1:
-                        ClassProducto.Menú_Pizza_Hut();                   
+        do {
+            Elección=Integer.parseInt(JOptionPane.showInputDialog
+                                ("Por favor, elija el restaurante de su preferecia:"
+                                + "\n1. Pizza Hut."
+                                + "\n2. Taco Bell."
+                                + "\n3. Pops."
+                                + "\n4. Burguer King."
+                                + "\n5. Revisar Pedido"
+                                + "\n6. Pagar pedido"
+                                + "\n0. 0 para ir Atras"
+                                + "\n"
+                                + ""
+                                + ""
+                                + "\n Nota: solo se permiten 4 pedidos a la vez"));
+            switch(Elección) {
+                case 1:
+                    ClassProducto.Menú_Pizza_Hut();
                     break;
-                    
-                    case 2:
-                        ClassProducto.Menú_Taco_Bell();
-                        
+                case 2:
+                    ClassProducto.Menú_Taco_Bell();
                     break;
-                    
-                    case 3:
-                        ClassProducto.Menú_Pops();
-                        
+                case 3:
+                    ClassProducto.Menú_Pops();
                     break;
-                    
-                    case 4:
-                        ClassProducto.Menú_Burguer_King();
-                        
+                case 4:
+                    ClassProducto.Menú_Burguer_King();
                     break;
-                    
-                    default:
-                                                
+                case 5:
+                    ClassProducto.mostrarPedido();
+                    break;
+                case 6:
+                    ClassProducto.Suma();
+                    ElegirRepartidor.Lista_Repartidores_Registrados();
+                    break;
+                default:
                     break;                    
-                }
-                
-             Repetición++;
-             
-                if (Repetición==4)
-                {
-                    JOptionPane.showMessageDialog(null,"Alcanzó la cantidad de pedidos simultáneos");
-                }
-             
-            }while((Elección!=0)&&(Repetición<4)); 
-        
-        }
-     ClassProducto.Suma();
-     ElegirRepartidor.Elegir_Random(); 
+            }
+        }while(Elección!=0);
     }
-    
+        
     /** 
      * Este método se encargaría de el Inicio desplegable de la Aplicación, 
      * desde acá el usuario iniciará sesion o se registrara.
@@ -131,7 +118,7 @@ public class Just_EatsCR
                                                            +"\n0. 0 Salir de la App"));
             switch(Opcion){
                 case 1:
-                    if(ClassCliente.iniciarSesion() == 1) {
+                    if(ClassCliente.iniciarSesion() == true) {
                         ClassCliente.realizarAccion();
                     }
                     break;
