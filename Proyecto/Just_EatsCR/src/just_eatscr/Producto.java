@@ -1,9 +1,9 @@
 /*
  * Producto
  *
- * @version 1.04
+ * @version 1.05
  *
- * Fecha 06-04-2021
+ * Fecha 08-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,18 +16,18 @@ import javax.swing.JOptionPane;
  * así como la cantidad, tamaño y el precio según sea el caso.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.04    06 de abril 2021
+ * @version     1.05    08 de abril 2021
  * @see         Class
  * @see         Promociones.
  * @see         Descuentos.
 */
 public class Producto 
 {
-    public String Codigo= "";
-    public String Tipo= "";
-    public String Tamaño="";
-    public double Precio=0; 
-    public int Elección;
+    private String Codigo= "";
+    private String Tipo= "";
+    private String Tamaño="";
+    private double Precio=0;
+    private int Contador=0;
     
     int i=0;
     double Suma=0; 
@@ -37,6 +37,7 @@ public class Producto
     Producto Menú_TacoBell[] = new Producto[10];
     Producto Menú_BurguerKing[] = new Producto[10];
     Producto Menú_Pops[] = new Producto[10];
+    Producto Eleccion[] = new Producto[4];
 
     /**
      * Este sería el constructor vacío de esta clase.
@@ -62,6 +63,22 @@ public class Producto
         this.Tipo=Tipo;
         this.Tamaño=Tamaño;
         this.Precio=Precio;
+    }
+    
+    /** 
+     * Este es el método que se encarga de Mostrar los pedidos que el Usuario
+     * realizo.
+     * 
+     */
+    
+    public void mostrarPedido() {
+        
+        for(int i = 0; i < Contador ; i++) {
+            JOptionPane.showMessageDialog(null,"Su pedido "+(i+1)+" es: " + Eleccion[i].Codigo
+                    + "\nDescripción: " + Eleccion[i].Tipo
+                    + "\nTamaño: " + Eleccion[i].Tamaño
+                    + "\nPrecio: " + Eleccion[i].Precio);        }
+        
     }
     
 
@@ -95,21 +112,25 @@ public class Producto
         
         int Opcion;
         
-        Opcion = Integer.parseInt(JOptionPane.showInputDialog("Pizza Hut Menu"
+        if(Contador < 4) {
+            Opcion = Integer.parseInt(JOptionPane.showInputDialog("Pizza Hut Menu"
                             + "\nCombo 1 -- Pizza de Pepperoni Lovers + Pepsi 2L -- Mediana -- Precio ¢9950"
                             + "\nCombo 2 -- Pizza Suprema + Pepsi 2L -- Mediana -- Precio ¢9950"
                             + "\nCombo 3 -- Pizza Jamón y Hongos + Pepsi 2L -- Mediana -- Precio ¢9950"
                             + "\nCombo 4 -- Pizza Chesse Lovers + Pepsi 1.6 0hz -- Personal -- Precio ¢2500"
-                            + "\nCombo 5 -- Pizza Hawaiana + Pepsi 2L -- Grande -- Precio ¢11950\""
+                            + "\nCombo 5 -- Pizza Hawaiana + Pepsi 2L -- Grande -- Precio ¢11950"
                             + "\nDigite Numero de combo:"));
-        
-        JOptionPane.showMessageDialog(null, "Tu combo es: \n" + Menú_Pizza[(Opcion-1)].Codigo
+            
+            JOptionPane.showMessageDialog(null, "Tu combo es: \n" + Menú_Pizza[(Opcion-1)].Codigo
                                      + "\nPrecio a cancelar: " + Menú_Pizza[(Opcion-1)].Precio);
-        
-
-        Suma+=Menú_Pizza[(Opcion-1)].Precio;
-
-             
+            Eleccion[Contador] = new Producto(Menú_Pizza[Opcion-1].Codigo, Menú_Pizza[Opcion-1].Tipo, Menú_Pizza[Opcion-1].Tamaño, Menú_Pizza[Opcion-1].Precio);
+            Contador++;
+            
+            Suma+=Menú_Pizza[(Opcion-1)].Precio;
+            
+        }else {
+            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+        }
     }
  
     /** 
@@ -127,20 +148,26 @@ public class Producto
         Menú_TacoBell[4] = new Producto("Combo 5","Xtra Big Burrito, papas y bebida 21 Oz", "Regular", 3950);              
         
         int Opcion;
-        
-        Opcion = Integer.parseInt(JOptionPane.showInputDialog("Taco Bell Menu"
+      
+        if(Contador < 4) {
+            Opcion = Integer.parseInt(JOptionPane.showInputDialog("Taco Bell Menu"
                             + "\nCombo 1 -- 3 Tacos, papas y bebida 21 Oz -- Regular -- Precio ¢3450"
                             + "\nCombo 2 -- Burrito Supreme, Taco Supreme, papas y bebida 21 Oz -- Regular -- Precio ¢3950"
                             + "\nCombo 3 -- Crunchy Wrap Supreme, papas y bebida 21 Oz -- Regular -- Precio ¢3950"
                             + "\nCombo 4 -- Bacon Cheddar Burrito, Taco Supreme, Papas y bebida 21 Oz -- Regular -- Precio ¢3950"
                             + "\nCombo 5 -- Xtra Big Burrito, papas y bebida 21 Oz -- Regular -- Precio ¢3950"
                             + "\nDigite Numero de combo:"));
-        
-        JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_TacoBell[(Opcion-1)].Codigo
+            
+            JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_TacoBell[(Opcion-1)].Codigo
                                      + "\nPrecio a cancelar: " + Menú_TacoBell[(Opcion-1)].Precio);
-        
-        Suma+=Menú_TacoBell[(Opcion-1)].Precio;       
-       
+            Eleccion[Contador] = new Producto(Menú_TacoBell[Opcion-1].Codigo, Menú_TacoBell[Opcion-1].Tipo, Menú_TacoBell[Opcion-1].Tamaño, Menú_TacoBell[Opcion-1].Precio);
+            Contador++;
+            
+            Suma+=Menú_TacoBell[(Opcion-1)].Precio;
+            
+        }else {
+            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+        }
     }
 
     /** 
@@ -159,7 +186,8 @@ public class Producto
    
      int Opcion;
         
-        Opcion = Integer.parseInt(JOptionPane.showInputDialog("Burguer King Menu"
+        if(Contador < 4) {
+            Opcion = Integer.parseInt(JOptionPane.showInputDialog("Burguer King Menu"
                             + "\nCombo 1 -- Crispy Chicken-- papas regulares y Pepsi 1/2 L-- Regular-- ¢5200 "
                             + "\nCombo 2 -- Spicy Crispy Chiken-- papas regulares y Pepsi 1/2 L-- Regular-- ¢5200"
                             + "\nCombo 3 -- King de Pollo-- papas regulares y Pepsi 1/2 L-- Regular-- ¢4700"
@@ -167,11 +195,17 @@ public class Producto
                             + "\nCombo 5 -- Tender Grill Tejano-- papas regulares y Pepsi 1/2 L-- Regular-- ¢5950"
                             + "\nDigite Numero de combo:"));
         
-        JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_BurguerKing[(Opcion-1)].Codigo
-                                     + "\nPrecio a cancelar: " + Menú_BurguerKing[(Opcion-1)].Precio);
-    
-        Suma+=Menú_BurguerKing[(Opcion-1)].Precio; 
-         
+            JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_BurguerKing[(Opcion-1)].Codigo
+                                        + "\nPrecio a cancelar: " + Menú_BurguerKing[(Opcion-1)].Precio);
+            
+            Eleccion[Contador] = new Producto(Menú_BurguerKing[Opcion-1].Codigo, Menú_BurguerKing[Opcion-1].Tipo, Menú_BurguerKing[Opcion-1].Tamaño, Menú_BurguerKing[Opcion-1].Precio);
+            Contador++;
+            
+            Suma+=Menú_BurguerKing[(Opcion-1)].Precio;
+            
+        }else {
+            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+        }
     }    
 
     /** 
@@ -186,8 +220,9 @@ public class Producto
         Menú_Pops[1] = new Producto("Opción 2","Banana Split Cup Clásica", "Regular", 2350);         
         Menú_Pops[2] = new Producto("Opción 3","Sundae Clásico", "Regular", 2100);        
         Menú_Pops[3] = new Producto("Opción 4","Churchill Shake", "Regular", 2350);        
-        Menú_Pops[4] = new Producto("Opción 5","Jelly Pops", "Regular", 1900);                  
-     int Opcion;
+        Menú_Pops[4] = new Producto("Opción 5","Jelly Pops", "Regular", 1900); 
+        
+        int Opcion;
         
         Opcion = Integer.parseInt(JOptionPane.showInputDialog("Pops Menu"
                             + "\nCombo 1 --Milk Shake Clásica--Regular-- ¢2400 "
@@ -197,11 +232,17 @@ public class Producto
                             + "\nCombo 5 --Jelly Pops--Regular-- ¢1900 "
                             + "\nDigite Numero de combo:"));
         
-        JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_Pops[(Opcion-1)].Codigo
+        if(Contador < 4) {
+            JOptionPane.showMessageDialog(null, "Tu combo es: " + Menú_Pops[(Opcion-1)].Codigo
                                      + "\nPrecio a cancelar: " + Menú_Pops[(Opcion-1)].Precio);
-        
-        Suma+=Menú_Pops[(Opcion-1)].Precio;
-           
+            Eleccion[Contador] = new Producto(Menú_Pops[Opcion-1].Codigo, Menú_Pops[Opcion-1].Tipo, Menú_Pops[Opcion-1].Tamaño, Menú_Pops[Opcion-1].Precio);
+            Contador++;
+            
+            Suma+=Menú_Pops[(Opcion-1)].Precio;
+            
+        }else {
+            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+        }
     }
 
     /**
@@ -211,6 +252,50 @@ public class Producto
     {    
         Promociones Verificar = new Promociones(Suma);      
         Verificar.Descuentos(Suma);
+    }
+    
+    /** 
+     * Getters y setters necesarios para la clase.
+     */
+
+    public String getCodigo() {
+        return Codigo;
+    }
+
+    public void setCodigo(String Codigo) {
+        this.Codigo = Codigo;
+    }
+
+    public String getTipo() {
+        return Tipo;
+    }
+
+    public void setTipo(String Tipo) {
+        this.Tipo = Tipo;
+    }
+
+    public String getTamaño() {
+        return Tamaño;
+    }
+
+    public void setTamaño(String Tamaño) {
+        this.Tamaño = Tamaño;
+    }
+
+    public double getPrecio() {
+        return Precio;
+    }
+
+    public void setPrecio(double Precio) {
+        this.Precio = Precio;
+    }
+
+    public Producto[] getEleccion() {
+        return Eleccion;
+    }
+
+    public void setEleccion(Producto[] Eleccion) {
+        this.Eleccion = Eleccion;
     }
     
 }
