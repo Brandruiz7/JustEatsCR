@@ -1,5 +1,5 @@
 /*
- * @(#)Just_EatsCR.java        1.04  Fecha 04/04/2021
+ * @(#)Just_EatsCR.java        1.05  Fecha 05/04/2021
  * 
  * Copyright (c) "Preguntar a la profe"
  */
@@ -44,13 +44,10 @@ public class Just_EatsCR
        
        a.inicioSesion();
        
-      Promociones ClassPromociones = new Promociones("",0,0);
-      ClassPromociones.Descuentos();
+     
       
-      Factura ClassFactura = new Factura(" ",0);
-      ClassFactura.Calculo_IVA();
-      ClassFactura.Factura();
-      ClassFactura.Total();
+      
+      
       
     }
 
@@ -63,7 +60,9 @@ public class Just_EatsCR
     public void Elección_Restaurante () {
         Producto ClassProducto = new Producto();
         Cliente ClassCliente = new Cliente();
-        
+        Promociones ClassPromociones = new Promociones("",0,0);
+        Factura ClassFactura = new Factura(" ",0,0,0," ");
+       
         int Elección;
         do
         {
@@ -85,19 +84,34 @@ public class Just_EatsCR
             {
                 case 1:
                     ClassProducto.Menú_Pizza_Hut();
-                    
+                    ClassPromociones.Descuentos();
+                    ClassFactura.Calculo_IVA();
+                    ClassFactura.Factura();
+                    ClassFactura.Total();
                     break;
                     
                 case 2:
                     ClassProducto.Menú_Taco_Bell();
+                    ClassPromociones.Descuentos();
+                    ClassFactura.Calculo_IVA();
+                    ClassFactura.Factura();
+                    ClassFactura.Total();
                     break;
                     
                 case 3:
                     ClassProducto.Menú_Pops();
+                    ClassPromociones.Descuentos();
+                    ClassFactura.Calculo_IVA();
+                    ClassFactura.Factura();
+                    ClassFactura.Total();
                     break;
                     
                 case 4:
                     ClassProducto.Menú_Burguer_King();
+                    ClassPromociones.Descuentos();
+                    ClassFactura.Calculo_IVA();
+                    ClassFactura.Factura();
+                    ClassFactura.Total();
                     break;
                 case 5:
                     ClassProducto.mostrarPedido();
@@ -121,7 +135,8 @@ public class Just_EatsCR
     public void inicioSesion(){
         //Realizamos las instancias de las clases necesarias.
         Cliente ClassCliente = new Cliente();           
-        Just_EatsCR MenElec = new Just_EatsCR();        
+        Just_EatsCR MenElec = new Just_EatsCR();   
+        
         
         int Opcion=0;
         
@@ -152,5 +167,5 @@ public class Just_EatsCR
         } while(Opcion!=0);
     }
 
-
+      
 }
