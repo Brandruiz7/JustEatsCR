@@ -1,5 +1,5 @@
 /*
- * @(#)Just_EatsCR.java        1.05  Fecha 05/04/2021
+ * @(#)Just_EatsCR.java        1.06  Fecha 06/04/2021
  * 
  * Copyright (c) "Preguntar a la profe"
  */
@@ -15,15 +15,15 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version    1.04    04 Apr 2021 
- * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
- * @see        Class
- * @see        Class#Cliente
- * @see        Class#Restaurantes
- * @see        Class#Repartidor
- * @see        Class#Producto
- * @see        Class#Factura
- * @see        Class#Promociones
+ * @version     1.06    06 Apr 2021 
+ * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
+ * @see         Class
+ * @see         Class#Cliente
+ * @see         Class#Restaurantes
+ * @see         Class#Repartidor
+ * @see         Class#Producto
+ * @see         Class#Factura
+ * @see         Class#Promociones
  * 
  */
 
@@ -43,11 +43,6 @@ public class Just_EatsCR
        Just_EatsCR a = new Just_EatsCR();
        
        a.inicioSesion();
-       
-     
-      
-      
-      
       
     }
 
@@ -59,71 +54,60 @@ public class Just_EatsCR
     
     public void Elección_Restaurante () {
         Producto ClassProducto = new Producto();
-        Cliente ClassCliente = new Cliente();
-        Promociones ClassPromociones = new Promociones("",0,0);
-        Factura ClassFactura = new Factura(" ",0,0,0," ");
-       
+        Repartidor ElegirRepartidor = new Repartidor ();
         int Elección;
-        do
+        int Repetición=0;
+        
+        if (Repetición<4)
         {
-            Elección=Integer.parseInt(JOptionPane.showInputDialog
-                                ("Por favor, elija el restaurante de su preferecia:"
-                                + "\n1. Pizza Hut."
-                                + "\n2. Taco Bell."
-                                + "\n3. Pops."
-                                + "\n4. Burguer King."
-                                + "\n5. Revisar Pedido"
-                                + "\n6. Cancelar pedido"
-                                + "\n0. 0 para ir Atras"
-                                + "\n"
-                                + ""
-                                + ""
-                                + "\n Nota: solo se permiten 4 pedidos a la vez"));
-            
-            switch(Elección)
+            do
             {
-                case 1:
-                    ClassProducto.Menú_Pizza_Hut();
-                    ClassPromociones.Descuentos();
-                    ClassFactura.Calculo_IVA();
-                    ClassFactura.Factura();
-                    ClassFactura.Total();
+                Elección=Integer.parseInt(JOptionPane.showInputDialog
+                        ("Por favor, elija el restaurante de su preferecia:"
+                      +"\n1. Pizza Hut."
+                      +"\n2. Taco Bell."
+                      +"\n3. Pops."
+                      +"\n4. Burguer King."
+                      +"\n0. 0 para ir Atras"));
+            
+                switch(Elección)
+                {
+                    case 1:
+                        ClassProducto.Menú_Pizza_Hut();                   
                     break;
                     
-                case 2:
-                    ClassProducto.Menú_Taco_Bell();
-                    ClassPromociones.Descuentos();
-                    ClassFactura.Calculo_IVA();
-                    ClassFactura.Factura();
-                    ClassFactura.Total();
+                    case 2:
+                        ClassProducto.Menú_Taco_Bell();
+                        
                     break;
                     
-                case 3:
-                    ClassProducto.Menú_Pops();
-                    ClassPromociones.Descuentos();
-                    ClassFactura.Calculo_IVA();
-                    ClassFactura.Factura();
-                    ClassFactura.Total();
+                    case 3:
+                        ClassProducto.Menú_Pops();
+                        
                     break;
                     
-                case 4:
-                    ClassProducto.Menú_Burguer_King();
-                    ClassPromociones.Descuentos();
-                    ClassFactura.Calculo_IVA();
-                    ClassFactura.Factura();
-                    ClassFactura.Total();
-                    break;
-                case 5:
-                    ClassProducto.mostrarPedido();
-                    break;
-                case 6:
+                    case 4:
+                        ClassProducto.Menú_Burguer_King();
+                        
                     break;
                     
-                default:
+                    default:
                                                 
                     break;                    
-            }
-        }while(Elección!=0);
+                }
+                
+             Repetición++;
+             
+                if (Repetición==4)
+                {
+                    JOptionPane.showMessageDialog(null,"Alcanzó la cantidad de pedidos simultáneos");
+                }
+             
+            }while((Elección!=0)&&(Repetición<4)); 
+        
+        }
+     ClassProducto.Suma();
+     ElegirRepartidor.Elegir_Random(); 
     }
     
     /** 
@@ -135,13 +119,12 @@ public class Just_EatsCR
     public void inicioSesion(){
         //Realizamos las instancias de las clases necesarias.
         Cliente ClassCliente = new Cliente();           
-        Just_EatsCR MenElec = new Just_EatsCR();   
-        
+        Just_EatsCR MenElec = new Just_EatsCR();        
         
         int Opcion=0;
         
         do{
-            Opcion = Integer.parseInt(JOptionPane.showInputDialog("                           Just Eats"
+            Opcion = Integer.parseInt(JOptionPane.showInputDialog("                Just Eats                "
                                                            +"\nGracias por usar nuestro servicio, Bienvenido"
                                                            +"\n1. Iniciar Sesion." 
                                                            +"\n2. Registrarse." 
@@ -167,5 +150,5 @@ public class Just_EatsCR
         } while(Opcion!=0);
     }
 
-      
+
 }
