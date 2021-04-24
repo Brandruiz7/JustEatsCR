@@ -1,7 +1,7 @@
 /*
  * Cliente
  *
- * @version 1.02
+ * @version 1.03
  *
  * Fecha 01-04-2021
  *
@@ -9,14 +9,17 @@
  */
 package just_eatscr;
 
+import javax.swing.JOptionPane;
+
 /**
  * Esta es la clase Cliente, acá podemos encontrar la información sobre
  * el usuario y datos de inicio de Sesión en la app Just Eats.
  *   
  * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version    1.02    01 de Abril 2021
+ * @version    1.03    01 de Abril 2021
  * 
 */
+
 
 public class Cliente 
 {
@@ -62,6 +65,67 @@ public class Cliente
         this.Correo=Correo;
         this.Teléfono=Teléfono;
     }
+    
+    /** 
+    * En este metodo que permite al cliente realizar compras de los diferentes
+    * productos dentro de la App.
+    * 
+    * 
+    */
+    
+    public void realizarCompra()
+    {
+        
+    }
+    
+    /** 
+    * Este es el metodo que permite al cliente realizar reclamos sobre sus peidos o 
+    * productos comprados en la App. Dependiendo del reclamo este se almacenara 
+    * de forma textual en una variable String.
+    */
+    
+    public void realizarReclamo() {
+        String Recl_Producto = "";
+        String Recl_Pedido = "";
+        int    Option; 
+        
+        do {
+        Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
+                                                           +"\nGracias por usar nuestro servicio"
+                                                           +"\nPor favor indicar tipo de reclamo"
+                                                           +"\n1-Recalmo sobre producto" 
+                                                           +"\n2-Reclamo sobre pedido" 
+                                                           +"\n3-Atras"));
+        switch(Option) {
+            case 1:
+                Recl_Producto = JOptionPane.showInputDialog("Indique Reclamo de Preducto");
+                JOptionPane.showMessageDialog(null, "Su reclamo sera tomado"
+                                                  + "\n                     Gracias");
+                break;
+            case 2:
+                Recl_Pedido = JOptionPane.showInputDialog("Indique Reclamo de Pedido");
+                JOptionPane.showMessageDialog(null, "Su reclamo sera tomado"
+                                                  + "\n                   Gracias");
+                break;
+            default:
+                break;
+        }
+        } while(Option!=3);
+    }
+    
+    /** 
+    * Este es el metodo que permite al cliente realizar sugerencias a productos o bien
+    * funciones de la App. Esta informacion se guardara en un variable tipo String.
+    */
+    
+    public void realizarSugerencia() {
+        String Sugerencia = "";
+        
+        Sugerencia = JOptionPane.showInputDialog("Indique cual es su sugerencia");
+        JOptionPane.showMessageDialog(null, "Su sugerencia sera tomada en cuenta"
+                                          + "\n                    Gracias");
+    }
+    
 
     public String getID_Cliente() 
     {
