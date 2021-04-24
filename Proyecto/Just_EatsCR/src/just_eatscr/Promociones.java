@@ -1,9 +1,9 @@
 /*
  * Promociones
  *
- * @version 1.02
+ * @version 1.03
  *
- * Fecha 03-04-2021
+ * Fecha 05-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -26,8 +26,12 @@ public class Promociones
     public String Tipo_Promo = "";
     public double Descuento_Promo; 
     public double Compra;
+   
     
-   public Promociones ( String Tipo_Promo, double Descuento_Promo, double Compra)
+    
+  
+  
+    public Promociones ( String Tipo_Promo, double Descuento_Promo, double Compra)
     {
         this.Tipo_Promo=Tipo_Promo;
         this.Descuento_Promo=Descuento_Promo;
@@ -35,28 +39,33 @@ public class Promociones
         
     } 
     
- 
+   
     /**
      * En este método 
      * se le aplicará un descuento de 15% al cliente, si la compra que ha realizado es mayor 
      * a ¢10.000 
-     * 
+     * Si la compra es menor a 10000 tendra 0% de descuento
      */
     
  public void Descuentos()
  {
    double Compra = Double.parseDouble(JOptionPane.showInputDialog("digite el monto a pagar"));
 
-  if(Compra > 10000)
+  if(Compra < 10000)
   {
-     Compra -=(Compra*0.15); 
+     Compra -=(Compra*0); 
   }  
+  
+  else if(Compra > 10000)
+  {
+      Compra -=(Compra*0.15);
+  }
   else
    {
-     Compra=Descuento_Promo;
+     Compra=Compra;
    }
    
-  JOptionPane.showMessageDialog(null," El monto a pagar con el descuento aplicado es: "+ Compra);
+  JOptionPane.showMessageDialog(null," El monto a pagar con el descuento aplicado es: "+Compra );
  }
 
 }
