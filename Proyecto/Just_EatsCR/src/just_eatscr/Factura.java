@@ -1,9 +1,9 @@
 /*
  * Factura
  *
- * @version 1.03
+ * @version 1.04
  *
- * Fecha 05-04-2021
+ * Fecha 06-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
  * costos totales del servicio, calculo  del Sub total, cobro del Impuesto
  * de Valor Agregado (I.V.A) y el total final.
  *   
- * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version    1.02    01 de abril 2021
+ * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
+ * @version     1.04    06 de abril 2021
  * 
  */
 public class Factura 
@@ -28,75 +28,60 @@ public class Factura
      */
     
     private String Codigo_Factura = "";
-    private double Sub_Total=0;
     private double Total=0;
-    public String Eleccion="";
-    public double Compra=0;
+    public String Decisión="";
+    public double Saldo=0;
+    public double IVA=0.13;
+    public double CálculoIVA=0;
 
+    /**
+     * Este sería el constructor vacío de esta clase.
+     */
+    
+    public Factura ()
+    {
+        
+    }
+    
     /** 
      * Este es constructor se encargará de traer lo que el cliente decidió comprar
-     * @param Decisión      Este parámetro almacenará la elección.
      * @param Saldo         Este parámetro almacenará el precio final.
      */    
     
-    
-    Producto Menú_Pizza[] = new Producto[12]; 
-    Producto Menú_TacoBell[] = new Producto[10];
-    Producto Menú_BurguerKing[] = new Producto[10];
-    Producto Menú_Pops[] = new Producto[10];
-    
-    public Factura (String Eleccion, double Saldo, double Sub_Total, double Total, String Codigo_Factura)
+    public Factura (double Saldo)
     {
-        this.Eleccion=Eleccion; //Compañeros acá podemos guardar el nombre del combo que escogió el cliente
-        this.Compra=Compra; // Y acá el precio
-        this.Codigo_Factura=Codigo_Factura;
-        this.Sub_Total=Sub_Total;
-        this.Total=Total;
-    }     
-    
-    /** 
-     * Este es el método que se encarga del cálculo del Impuesto del IVA
-     * tomando en cuenta el Sub Total de la cuenta.
-     * 
-     */ 
-    
-    public void Calculo_IVA ()
-    {
-        double IVA=0.13;
-    
-        Sub_Total=Compra*IVA;
-        
-    }
+        this.Saldo=Saldo; // Y acá el precio
+    }      
 
-    /** 
-     * Este es el método que se encarga del cálculo Total de la cuenta
-     *
+    /**
+     * Este sería el constructor vacío de esta clase.
      */
     
-    public void Total ()
-    {
-        Total=Compra+Sub_Total;
+    public void Cálculo ()
+    {      
+        CálculoIVA=Saldo*IVA;
+        Total=Saldo+CálculoIVA;
         
     }
-
-    /** 
-     * Este método se encargaría de hacer un resumen de la transacción,
-     * acá nos muestra desde el nombre de la APP, la orden, placa y el costo
-     * desglosado, entiéndase como el Sub Total, Calculo del IVA y el saldo final.
+    
+    /**
+     * En este método, se imprime los datos totales como el sub total, el costo de Iva y el total.
      */
     
     public void Factura ()
     {
-        JOptionPane.showMessageDialog(null, "         Just Eats               "
-                                         +"\nGracias por usar nuestro servicio"
-                                         +"\nEl desglose es el siguiente"
-                                         +"\nEl pedido realizado fue:\n"
-                                         +Eleccion
-                                         +"\nDicho costo de servicio es de:\n"
-                                         +"\nSub Total: "+Compra
-                                         +"\nEl agregado del IVA: "+Sub_Total
-                                         +"\nEl Saldo Final es de: "+Total);     
+        Cálculo();
+        
+        JOptionPane.showMessageDialog(null, "            Just Eats CR              "
+                                         +"\nResumen del pedido:"
+                                         +"\nTotal:"+Saldo
+                                         +"\nImpuesto del Valor Agregado (IVA)"+CálculoIVA
+                                         +"\nEl total de compra realizada es: "+Total
+                                         +"\nEl pedido solicitado llegará en breve."
+                                         +"\n          Gracias por preferirnos");
     }
+     
+    
     
     public String getCodigo_Factura() 
     {
@@ -106,17 +91,6 @@ public class Factura
     public void setCodigo_Factura(String Codigo_Factura) 
     {
         this.Codigo_Factura = Codigo_Factura;
-    }
-
-
-    public double getSub_Total() 
-    {
-        return Sub_Total;
-    }
-
-    public void setSub_Total(double Sub_Total) 
-    {
-        this.Sub_Total = Sub_Total;
     }
 
     public double getTotal() 
@@ -130,4 +104,3 @@ public class Factura
         this.Total = Total;
     }
 }
-
