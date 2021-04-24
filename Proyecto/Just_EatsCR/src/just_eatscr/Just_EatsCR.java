@@ -1,5 +1,5 @@
 /*
- * @(#)Just_EatsCR.java        1.00  Fecha 17/03/2021
+ * @(#)Just_EatsCR.java        1.03  Fecha 03/04/2021
  * 
  * Copyright (c) "Preguntar a la profe"
  */
@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version    1.00    17 Mar 2021 
+ * @version    1.01    04 Apr 2021 
  * @author     Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
  * @see        Class
  * @see        Class#Cliente
@@ -34,15 +34,111 @@ public class Just_EatsCR
      * Para poder ejecutar el programa, se necesita una serie de variables,
      * cuya función se detallará en este apartado.
      * 
-     * @param args the command line arguments
+     * @param args
      */
       
     public static void main(String[] args) 
             
     {
+       Just_EatsCR a = new Just_EatsCR();
        
-        
+       a.inicioSesion();
+       
+      Promociones ClassPromociones = new Promociones("",0,0);
+      ClassPromociones.Descuentos();
+      
+      Factura ClassFactura = new Factura(" ",0);
+      ClassFactura.Calculo_IVA();
+      ClassFactura.Factura();
+      ClassFactura.Total();
+      
+    }
 
+    /** 
+     * Este método se encargaría de el menú desplegable que tendrá el cliente cuando acceda 
+     * a la aplicación, desde acá se incluirán otras clases, para poder ser llamadas desde el Main.
+     * 
+     */    
+    
+    public void Elección_Restaurante () {
+        Producto ClassProducto = new Producto();
+        
+        int Elección;
+        do
+        {
+            Elección=Integer.parseInt(JOptionPane.showInputDialog
+                        ("Por favor, elija el restaurante de su preferecia:"
+                      +"\n1. Pizza Hut."
+                      +"\n2. Taco Bell."
+                      +"\n3. Pops."
+                      +"\n4. Burguer King."
+                      +"\n0. 0 para ir Atras"));
+            
+            switch(Elección)
+            {
+                case 1:
+                    ClassProducto.Menú_Pizza_Hut();
+                    
+                    break;
+                    
+                case 2:
+                    ClassProducto.Menú_Taco_Bell();
+                    break;
+                    
+                case 3:
+                    ClassProducto.Menú_Pops();
+                    break;
+                    
+                case 4:
+                    ClassProducto.Menú_Burguer_King();
+                    break;
+                    
+                default:
+                                                
+                    break;                    
+            }
+        }while(Elección!=0);
     }
     
+    /** 
+     * Este método se encargaría de el Inicio desplegable de la Aplicación, 
+     * desde acá el usuario iniciará sesion o se registrara.
+     * 
+     */
+    
+    public void inicioSesion(){
+        //Realizamos las instancias de las clases necesarias.
+        Cliente ClassCliente = new Cliente();           
+        Just_EatsCR MenElec = new Just_EatsCR();        
+        
+        int Opcion=0;
+        
+        do{
+            Opcion = Integer.parseInt(JOptionPane.showInputDialog("                           Just Eats"
+                                                           +"\nGracias por usar nuestro servicio, Bienvenido"
+                                                           +"\n1. Iniciar Sesion." 
+                                                           +"\n2. Registrarse." 
+                                                           +"\n0. 0 Salir de la App"));
+            switch(Opcion){
+                case 1:
+                    if(ClassCliente.iniciarSesion() == 1) {
+                        ClassCliente.realizarAccion();
+                    }
+                    break;
+                case 2:
+                    ClassCliente.registrarDatos();
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Gracias por preferirnos");
+                    break;
+                default:
+                    ClassCliente.Mostrar();
+                    break;
+            }
+            
+            
+        } while(Opcion!=0);
+    }
+
+
 }
