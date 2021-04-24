@@ -25,5 +25,6 @@ public class Restaurantes
     public String Teléfono = "";
     public String Menú = "";
     public String Dirección = "";
-    
+
+
 }
