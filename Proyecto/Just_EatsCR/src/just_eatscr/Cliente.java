@@ -39,6 +39,7 @@ public class Cliente
     private String Teléfono = "";
     private int Contador=1;
     
+    
     Cliente DatosUser[] = new Cliente [3];
     
     /**
@@ -226,6 +227,9 @@ public class Cliente
                                           + "\n                    Gracias");
     }
     
+    /** 
+     * Getters y setters necesarios para la clase.
+     */
 
     public int getID_Cliente() 
     {
@@ -296,6 +300,4 @@ public class Cliente
     {
         this.Teléfono = Teléfono;
     }
-
-  
 }
