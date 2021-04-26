@@ -107,7 +107,7 @@ public class Cliente
     
     /** 
     * Este es el  metodo que permite al cliente iniciar sesion.
-     * @return Verificacion        Esta variable guardara un valor 1 necesario para seguir el procesos  
+     * @return Verificacion        Esta variable returna valor booleano necesario para seguir el procesos  
     */
     
     public boolean iniciarSesion() {
@@ -148,6 +148,7 @@ public class Cliente
     * Este es el metodo que permite al cliente realizar compras de los diferentes
     * productos dentro de la App o bien acceder a realizar reclamo y realazar sugerencia.
     * 
+     * @return Option
     */
     
     public int realizarAccion() {
