@@ -1,9 +1,9 @@
 /*
  * Cliente
  *
- * @version 1.06
+ * @version 1.07
  *
- * Fecha 08-04-2021
+ * Fecha 26-04-2021
  *
  * Copyright (c) "Preguntar a la profe"
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * el usuario y datos de inicio de Sesión en la app Just Eats.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.06    08 de Abril 2021
+ * @version     1.07    26 de Abril 2021
  * 
 */
 
@@ -38,6 +38,7 @@ public class Cliente
     private String Correo = "";
     private String Teléfono = "";
     private int Contador=1;
+    private int ID_UsuarioActual;
     
     
     Cliente DatosUser[] = new Cliente [3];
@@ -81,28 +82,57 @@ public class Cliente
     */
     
     public void registrarDatos(){
-        String Nombre;
-        String Usuario;
-        String Password;
+        Cliente veriEmail = new Cliente();
+        
+        String nombre;
+        String usuario;
+        String password;
         String Ubicacion;
-        String Correo;
-        String Teléfono; 
+        String correo;
+        String teléfono; 
         
         if(Contador != DatosUser.length) {
             
-            Nombre = JOptionPane.showInputDialog("Digite su Nombre: ");
-            Usuario = JOptionPane.showInputDialog("Digite su alias de Usuario: ");
-            Password = JOptionPane.showInputDialog("Digite su Password: ");
+            nombre = JOptionPane.showInputDialog("Digite su Nombre: ");
+            usuario = JOptionPane.showInputDialog("Digite su alias de Usuario: ");
+            password = JOptionPane.showInputDialog("Digite su Password: ");
             Ubicacion = JOptionPane.showInputDialog("Digite su Ubicacion: ");
-            Correo = JOptionPane.showInputDialog("Digite su Correo: ");
-            Teléfono = JOptionPane.showInputDialog("Digite su Teléfono: ");
+            correo = veriEmail.verificarEmail();
+            teléfono = JOptionPane.showInputDialog("Digite su Teléfono: ");
             
-            DatosUser[ID_Cliente+1] = new Cliente(Nombre, Usuario, Password, Ubicacion, Correo, Teléfono );
+            DatosUser[ID_Cliente+1] = new Cliente(nombre, usuario, password, Ubicacion, correo, teléfono );
             Contador++;
             ID_Cliente++;
         }else {
             JOptionPane.showMessageDialog(null,"Maximo de usuarios registrados alcanzada");
         }
+    }
+    
+    /** 
+    * Este es el  metodo que permite verificar que el correo ingreado tenga formato adecuado.
+     * @return correoV        Esta variable returna el correo correcto para ser almacenado  
+    */
+    
+    public String verificarEmail()
+    {
+        boolean verificar=false;
+        String correoV="";
+        
+        while(verificar == false) {
+            correoV = JOptionPane.showInputDialog("Digite su Correo: ");
+            for(int f = 0; f < correoV.length(); f++) {
+                if(correoV.charAt(f) == '@') {
+                    verificar=true;
+                }
+            }
+            if(verificar==true) {
+                JOptionPane.showMessageDialog(null,correoV + " Correo valido");
+            } else {
+                JOptionPane.showMessageDialog(null,correoV + " Correo No valido");        
+            }
+        }
+        
+        return correoV;
     }
     
     /** 
@@ -121,7 +151,8 @@ public class Cliente
         
         for(int i = 0; i < Contador; i++) {
             if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {
-                JOptionPane.showMessageDialog(null,"Correcto");
+                JOptionPane.showMessageDialog(null,"Datos Correctos");
+                ID_UsuarioActual = i;
                 i = DatosUser.length;
                 Verificacion=true;
                
@@ -134,14 +165,20 @@ public class Cliente
         return Verificacion;
     }
             
+    /** 
+    * Este es el  metodo que permite al cliente mostrar sus datos gaurdados
+    * en el Sistema.
+    *   
+    */
     
-    
-    //gente usamos este para saber si se registro bien el usuario
-    public void Mostrar() {
-        for(int i = 0; i < DatosUser.length; i++) {
-            JOptionPane.showMessageDialog(null, "User data " + (i+1) + " es: " + "\nNombre:" + DatosUser[i].Nombre + "\nCorreo" + DatosUser[i].Correo );
-        }
-        
+    public void mostrarDatos() {
+        JOptionPane.showMessageDialog(null, "Datos de usuario"
+                + "\nId de usuario" + ID_UsuarioActual 
+                + "\nNombre: " + DatosUser[ID_UsuarioActual].Nombre 
+                + "\nUsuario: " + DatosUser[ID_UsuarioActual].Usuario
+                + "\nCorreo: " + DatosUser[ID_UsuarioActual].Correo
+                + "\nTeléfono: " + DatosUser[ID_UsuarioActual].Teléfono
+                + "\nUbicacion: " + DatosUser[ID_UsuarioActual].Ubicación );
     }
     
     /** 
@@ -161,7 +198,8 @@ public class Cliente
                                                            + "\nSeleccione un opción."
                                                            + "\n1. Realizar pedido"
                                                            + "\n2. Realizar reclamo" 
-                                                           + "\n3. Realizar sugerencia" 
+                                                           + "\n3. Realizar sugerencia"
+                                                           + "\n4. Revisar Info. de Usuario" 
                                                            + "\n0. Cerrar sesion"));
             switch(Option) {
                 case 1:
@@ -172,6 +210,9 @@ public class Cliente
                     break;
                 case 3:
                     ClassCliente.realizarSugerencia();
+                    break;
+                case 4:
+                    ClassCliente.mostrarDatos();
                     break;
                 default:
                     break;
@@ -301,4 +342,14 @@ public class Cliente
     {
         this.Teléfono = Teléfono;
     }
+
+    public int getID_UsuarioActual() {
+        return ID_UsuarioActual;
+    }
+
+    public void setID_UsuarioActual(int ID_UsuarioActual) {
+        this.ID_UsuarioActual = ID_UsuarioActual;
+    }
+    
+    
 }

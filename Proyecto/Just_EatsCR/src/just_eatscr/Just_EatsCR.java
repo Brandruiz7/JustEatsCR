@@ -144,7 +144,6 @@ public class Just_EatsCR
                     JOptionPane.showMessageDialog(null, "Gracias por preferirnos");
                     break;
                 default:
-                    ClassCliente.Mostrar();
                     break;
             }
             
