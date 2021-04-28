@@ -5,7 +5,7 @@
  *
  * Fecha 22-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
 
 /**
  * Esta es la clase Factura, en este apartado estará el detalle de los 
- * costos totales del servicio, calculo  del Sub total, cobro del Impuesto
+ * costos totales del servicio, cálculo  del Sub total, cobro del Impuesto
  * de Valor Agregado (I.V.A) y el total final.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
@@ -57,7 +57,7 @@ public class Factura
     }
 
     /**
-     * Este es el metodo encargado de calcular el impuesto de Venta.
+     * Este es el método encargado de calcular el impuesto de Venta.
      */
     
     public void Cálculo () {      
@@ -66,7 +66,7 @@ public class Factura
     }
     
     /**
-     * En este método, se imprime los datos totales como el sub total, el costo de Iva y el total.
+     *  En este método, se usará para indicarle al cliente cuál es método de cancelación
      */
     
     public void metodoPago() {
@@ -90,7 +90,7 @@ public class Factura
     }
     
     /**
-     * En este método, se imprime los datos totales como el sub total, el costo de Iva y el total.
+     * En este método, se imprime los datos totales como el sub total, el costo de IVA y el total.
      */
     
     public void Facturacion () {

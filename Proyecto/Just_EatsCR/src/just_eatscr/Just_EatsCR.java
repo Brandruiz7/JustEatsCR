@@ -1,9 +1,12 @@
 /*
- * @(#)Just_EatsCR.java        1.09  Fecha 22/04/2021
- * 
- * Copyright (c) "Preguntar a la profe"
+ * @(#)Just_EatsCR.java
+ *
+ * @version 1.09
+ *
+ * Fecha 22/04/2021
+ *
+ * Copyright (c) 
  */
-
 package just_eatscr;
 
 import javax.swing.JOptionPane;
@@ -67,16 +70,16 @@ public class Just_EatsCR
                                 + "\n1. Pizza Hut."
                                 + "\n2. Taco Bell."
                                 + "\n3. Pops."
-                                + "\n4. Burguer King."
-                                + "\n   Opciones del pedido!"
-                                + "\n5. Revisar Pedido"
+                                + "\n4. Burguer King.\n"
+                                + "\nOpciones del pedido:"
+                                + "\n5. Revisar pedido"
                                 + "\n6. Pagar pedido"
-                                + "\n7. Contacto Restaurantes"
-                                + "\n0. 0 para ir Atras y borrer pedido"
+                                + "\n7. Contacto restaurantes"
+                                + "\n0. 0 para ir Atras y borrar pedido"
                                 + "\n"
                                 + ""
                                 + ""
-                                + "\n Nota: solo se permiten 4 pedidos a la vez"));
+                                + "\nNota: Solo se permiten 4 pedidos a la vez"));
             switch(Elección) {
                 case 1:
                     ClassProducto.Menú_Pizza_Hut();
@@ -113,8 +116,8 @@ public class Just_EatsCR
     }
         
     /** 
-     * Este método se encargaría de el Inicio desplegable de la Aplicación, 
-     * desde acá el usuario iniciará sesion o se registrara.
+     * Este método se encargaría del inicio desplegable de la aplicación, 
+     * desde acá el usuario iniciará sesión o se registrara.
      * 
      */
     
@@ -127,8 +130,8 @@ public class Just_EatsCR
         
         do{
             Opcion = Integer.parseInt(JOptionPane.showInputDialog("                Just Eats                "
-                                                           +"\nGracias por usar nuestro servicio, Bienvenido"
-                                                           +"\n1. Iniciar Sesion." 
+                                                           +"\nGracias por usar nuestro servicio, bienvenido"
+                                                           +"\n1. Iniciar sesión." 
                                                            +"\n2. Registrarse." 
                                                            +"\n0. 0 Salir de la App"));
             switch(Opcion){

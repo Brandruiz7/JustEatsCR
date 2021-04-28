@@ -5,7 +5,7 @@
  *
  * Fecha 08-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -78,18 +78,11 @@ public class Repartidor
        JOptionPane.showMessageDialog(null, "Se le ha asignado un repartidor\n"
                                                + "\nPlaca: " + Repartidores_APP[NúmeroRandom].ID_Repartidor
                                                + "\nNombre: " + Repartidores_APP[NúmeroRandom].Nombre);       
-       
-       /*
-       Random rand = new Random();
-       int i = rand.nextInt(9);
-       JOptionPane.showMessageDialog(null, "Se le ha asignado un repartidor\n"
-                + "\nPlaca: " + Repartidores_APP[i].ID_Repartidor
-                + "\nNombre: " + Repartidores_APP[i].Nombre);
-       */
+
     }
     
     /**
-     * Metodo que ejecuta la selleccion del rapartidor de manera aleatoria.
+     * Método que ejecuta la selección del repartidor de manera aleatoria.
      */ 
     
     public void Elegir_Random ()

@@ -5,7 +5,7 @@
  *
  * Fecha 22-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -23,6 +23,10 @@ import javax.swing.JOptionPane;
 */
 public class Producto 
 {
+    /**
+     * Acá se colocarán los atributos necesarios.
+     */    
+    
     private String Codigo= "";
     private String Tipo= "";
     private String Tamaño="";
@@ -46,7 +50,7 @@ public class Producto
     }    
      
     /** 
-     * Este es constructor se encargará de traer lo que el cliente decidió comprar
+     * Este constructor se encargará de traer lo que el cliente decidió comprar
      * @param Código        Este parámetro almacenará el número de combo.
      * @param Tipo          Este parámetro almacenará la descripción o tipo de producto.
      * @param Tamaño        Este parámetro almacenará el tamaño del combo.      
@@ -63,8 +67,8 @@ public class Producto
     }
     
     /** 
-     * Este es el método que se encarga de Mostrar los pedidos que el Usuario
-     * realizo.
+     * Este es el método que se encarga de mostrar los pedidos que el usuario
+     * realizó.
      * 
      */
     
@@ -113,7 +117,7 @@ public class Producto
             Suma+=Menú_Pizza[(Opcion-1)].Precio;
             
         }else {
-            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+            JOptionPane.showMessageDialog(null,"Cantidad máxima de pedidos alcanzados");
         }
     }
  
@@ -150,7 +154,7 @@ public class Producto
             Suma+=Menú_TacoBell[(Opcion-1)].Precio;
             
         }else {
-            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+            JOptionPane.showMessageDialog(null,"Cantidad máxima de pedidos alcanzados");
         }
     }
 
@@ -188,7 +192,7 @@ public class Producto
             Suma+=Menú_BurguerKing[(Opcion-1)].Precio;
             
         }else {
-            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+            JOptionPane.showMessageDialog(null,"Cantidad máxima de pedidos alcanzados");
         }
     }    
 
@@ -227,7 +231,7 @@ public class Producto
             Suma+=Menú_Pops[(Opcion-1)].Precio;
             
         }else {
-            JOptionPane.showMessageDialog(null,"Cantidad maxima de pedidos alcanzados");
+            JOptionPane.showMessageDialog(null,"Cantidad máxima de pedidos alcanzados");
         }
     }
 
@@ -237,9 +241,7 @@ public class Producto
      */
     public double Suma ()
     {    
-        //Promociones Verificar = new Promociones(Suma);      
-        //Verificar.Descuentos(Suma);
-        
+
         return Suma;
     }
     

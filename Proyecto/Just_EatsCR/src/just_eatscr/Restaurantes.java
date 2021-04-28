@@ -5,7 +5,7 @@
  *
  * Fecha 19-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -39,10 +39,10 @@ public class Restaurantes
      
     /** 
      * Este es constructor se encargará de llenar los datos de los restaurantes
-     * @param Código        Este parámetro almacenará el codigo del restaurante.
+     * @param Código        Este parámetro almacenará el código del restaurante.
      * @param Nombre        Este parámetro almacenará el nombre del restaurante.
-     * @param Tele          Este parámetro almacenará el telefono de contacto de restaurante.      
-     * @param Direc         Este parámetro almacenará la direccion del restaurante.
+     * @param Tele          Este parámetro almacenará el teléfono de contacto de restaurante.      
+     * @param Direc         Este parámetro almacenará la dirección del restaurante.
      */    
     
             
@@ -55,7 +55,7 @@ public class Restaurantes
     }
     
     /** 
-     * Este es el método que se encarga de almacenar la informacion del Restaurante.
+     * Este es el método que se encarga de almacenar la información del Restaurante.
      * 
      */
     

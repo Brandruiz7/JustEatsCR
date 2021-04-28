@@ -5,7 +5,7 @@
  *
  * Fecha 19-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -13,8 +13,8 @@ import javax.swing.JOptionPane;
 
 /**
  * Esta es la clase Promociones, según la cantidad que compre el cliente,
- * se le otorgaría un descuento personalizado. También hay códigos 
- * de descuento, que los compañeros del departamento de Mercadeo se 
+ * se le otorgaría un descuento personalizado. Dicha información,
+ * los compañeros del departamento de Mercadeo se 
  * encargan de distribuir a los clientes frecuentes vía correo.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernández
@@ -50,9 +50,8 @@ public class Promociones
     
  
     /**
-     * En este método 
-     * se le aplicará un descuento de 15% al cliente, si la compra que ha realizado es mayor 
-     * a ¢10.000 
+     * En este método se le aplicará un descuento de 15% al cliente, si la compra
+     * que ha realizado es mayor a ¢10.000.
      * @param Saldo         Este parámetro trae información de otra clase ya creada para 
      *                      manipular el método de descuentos.
      * @return Compra       Retornamos el valor el la variable Compra luego del calculo.
@@ -67,13 +66,7 @@ public class Promociones
             Compra -=(Compra*0.15); 
             JOptionPane.showMessageDialog(null," Felicidades ha ganado un descuento, su nuevo saldo es: ¢"+ Compra);      
         }
-        
-        /*
-        Factura PasoFinal = new Factura (Compra);          
-        PasoFinal.metodoPago();
-        PasoFinal.Cálculo();
-        PasoFinal.Facturacion();
-        */
+
         return Compra;
     }
 
