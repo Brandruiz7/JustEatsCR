@@ -5,7 +5,7 @@
  *
  * Fecha 19-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -68,12 +68,6 @@ public class Promociones
             JOptionPane.showMessageDialog(null," Felicidades ha ganado un descuento, su nuevo saldo es: ¢"+ Compra);      
         }
         
-        /*
-        Factura PasoFinal = new Factura (Compra);          
-        PasoFinal.metodoPago();
-        PasoFinal.Cálculo();
-        PasoFinal.Facturacion();
-        */
         return Compra;
     }
 

@@ -5,7 +5,7 @@
  *
  * Fecha 22-04-2021
  *
- * Copyright (c) "Preguntar a la profe"
+ * Copyright (c) 
  */
 package just_eatscr;
 
@@ -57,7 +57,7 @@ public class Factura
     }
 
     /**
-     * Este es el metodo encargado de calcular el impuesto de Venta.
+     * Este es el método encargado de calcular el impuesto de Venta.
      */
     
     public void Cálculo () {      
@@ -73,7 +73,7 @@ public class Factura
         int Option=0;
         
         do {
-            Option = Integer.parseInt(JOptionPane.showInputDialog("Metdo de cancelacion."
+            Option = Integer.parseInt(JOptionPane.showInputDialog("Metdo de cancelación."
                     + "\n1. Tarjeta."
                     + "\n2. Efectivo"));
             
@@ -90,7 +90,7 @@ public class Factura
     }
     
     /**
-     * En este método, se imprime los datos totales como el sub total, el costo de Iva y el total.
+     * En este método, se imprime los datos totales como el sub total, el costo de IVA y el total.
      */
     
     public void Facturacion () {
