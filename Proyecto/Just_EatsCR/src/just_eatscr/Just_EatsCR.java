@@ -1,7 +1,7 @@
 /*
  * @(#)Just_EatsCR.java        1.09  Fecha 22/04/2021
  * 
- * Copyright (c) 
+ * Copyright (c) "Preguntar a la profe"
  */
 
 package just_eatscr;
@@ -67,16 +67,16 @@ public class Just_EatsCR
                                 + "\n1. Pizza Hut."
                                 + "\n2. Taco Bell."
                                 + "\n3. Pops."
-                                + "\n4. Burguer King.\n"
-                                + "\nOpciones del pedido:"
+                                + "\n4. Burguer King."
+                                + "\n   Opciones del pedido!"
                                 + "\n5. Revisar Pedido"
                                 + "\n6. Pagar pedido"
                                 + "\n7. Contacto Restaurantes"
-                                + "\n0. 0 para ir Atras y borrar pedido"
+                                + "\n0. 0 para ir Atras y borrer pedido"
                                 + "\n"
                                 + ""
                                 + ""
-                                + "\n Nota: Solo se permiten 4 pedidos a la vez"));
+                                + "\n Nota: solo se permiten 4 pedidos a la vez"));
             switch(Elección) {
                 case 1:
                     ClassProducto.Menú_Pizza_Hut();
@@ -127,8 +127,8 @@ public class Just_EatsCR
         
         do{
             Opcion = Integer.parseInt(JOptionPane.showInputDialog("                Just Eats                "
-                                                           +"\nGracias por usar nuestro servicio, bienvenido"
-                                                           +"\n1. Iniciar Sesión." 
+                                                           +"\nGracias por usar nuestro servicio, Bienvenido"
+                                                           +"\n1. Iniciar Sesion." 
                                                            +"\n2. Registrarse." 
                                                            +"\n0. 0 Salir de la App"));
             switch(Opcion){

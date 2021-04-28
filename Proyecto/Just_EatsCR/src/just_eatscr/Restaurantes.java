@@ -5,7 +5,7 @@
  *
  * Fecha 19-04-2021
  *
- * Copyright (c)
+ * Copyright (c) "Preguntar a la profe"
  */
 package just_eatscr;
 
