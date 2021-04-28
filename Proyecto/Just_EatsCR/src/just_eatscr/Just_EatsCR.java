@@ -1,9 +1,9 @@
 /*
  * @(#)Just_EatsCR.java
  *
- * @version 1.09
+ * @version 1.10
  *
- * Fecha 22/04/2021
+ * Fecha 28/04/2021
  *
  * Copyright (c) 
  */
@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * seleccionar el restaurante que desea, responder a la información
  * que se le solicita y finalizar con el pedido del restaurante elegido 
  *        
- * @version     1.09    22 Apr 2021 
+ * @version     1.10    28 Apr 2021 
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez     
  * @see         Class
  * @see         Class#Cliente
@@ -62,10 +62,10 @@ public class Just_EatsCR
         Factura ClassFactura;
         Promociones ClassPromo = new Promociones();
         
-        int Elección;
+        String Elección="";
         boolean Verificar = false;
         do {
-            Elección=Integer.parseInt(JOptionPane.showInputDialog
+            Elección = JOptionPane.showInputDialog
                                 ("Por favor, elija el restaurante de su preferecia:"
                                 + "\n1. Pizza Hut."
                                 + "\n2. Taco Bell."
@@ -79,24 +79,24 @@ public class Just_EatsCR
                                 + "\n"
                                 + ""
                                 + ""
-                                + "\nNota: Solo se permiten 4 pedidos a la vez"));
+                                + "\nNota: Solo se permiten 4 pedidos a la vez");
             switch(Elección) {
-                case 1:
+                case "1":
                     ClassProducto.Menú_Pizza_Hut();
                     break;
-                case 2:
+                case "2":
                     ClassProducto.Menú_Taco_Bell();
                     break;
-                case 3:
+                case "3":
                     ClassProducto.Menú_Pops();
                     break;
-                case 4:
+                case "4":
                     ClassProducto.Menú_Burguer_King();
                     break;
-                case 5:
+                case "5":
                     ClassProducto.mostrarPedido();
                     break;
-                case 6:
+                case "6":
                     ClassFactura = new Factura(ClassPromo.Descuentos(ClassProducto.Suma()));
                     ClassFactura.metodoPago();
                     ClassFactura.Cálculo();
@@ -104,14 +104,13 @@ public class Just_EatsCR
                     ClassElegirRepartidor.Lista_Repartidores_Registrados();
                     Verificar = true;
                     break;
-                case 7:
-                    ClassRestaurante.restaurantes();
+                case "7":
+                    ClassRestaurante.infoRestaurantes();
                     break;
                 default:
-                    
                     break;                    
             }
-        }while((Elección!=0) && (Verificar == false));
+        }while((!Elección.equals("0")) && (Verificar == false));
         
     }
         
@@ -125,25 +124,24 @@ public class Just_EatsCR
         //Realizamos las instancias de las clases necesarias.
         Cliente ClassCliente = new Cliente();           
                 
-        
-        int Opcion=0;
+        String Opcion="";
         
         do{
-            Opcion = Integer.parseInt(JOptionPane.showInputDialog("                Just Eats                "
+            Opcion = JOptionPane.showInputDialog("                Just Eats                "
                                                            +"\nGracias por usar nuestro servicio, bienvenido"
                                                            +"\n1. Iniciar sesión." 
                                                            +"\n2. Registrarse." 
-                                                           +"\n0. 0 Salir de la App"));
+                                                           +"\n0. 0 Salir de la App");
             switch(Opcion){
-                case 1:
+                case "1":
                     if(ClassCliente.iniciarSesion() == true) {
                         ClassCliente.realizarAccion();
                     }
                     break;
-                case 2:
+                case "2":
                     ClassCliente.registrarDatos();
                     break;
-                case 0:
+                case "0":
                     JOptionPane.showMessageDialog(null, "Gracias por preferirnos");
                     break;
                 default:
@@ -151,7 +149,7 @@ public class Just_EatsCR
             }
             
             
-        } while(Opcion!=0);
+        } while(!Opcion.equals("0"));
     }
 
 

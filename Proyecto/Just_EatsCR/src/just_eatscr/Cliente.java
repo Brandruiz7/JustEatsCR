@@ -1,9 +1,9 @@
 /*
  * Cliente
  *
- * @version 1.07
+ * @version 1.08
  *
- * Fecha 26-04-2021
+ * Fecha 28-04-2021
  *
  * Copyright (c) 
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * el usuario y datos de inicio de Sesión en la app Just Eats.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.07    26 de Abril 2021
+ * @version     1.08    28 de Abril 2021
  * 
 */
 
@@ -38,8 +38,6 @@ public class Cliente
     private String Correo = "";
     private String Teléfono = "";
     private int Contador=1;
-    private int ID_UsuarioActual;
-    
     
     Cliente DatosUser[] = new Cliente [3];
     
@@ -141,7 +139,7 @@ public class Cliente
     */
     
     public boolean iniciarSesion() {
-        DatosUser[0]= new Cliente("Alan","Alan","alan12","Los Yoses","Alan12@hotmail.com","87943560");      //Usuario previamente registrado
+        DatosUser[0] = new Cliente("Alan","Alan","alan12","Los Yoses","Alan12@hotmail.com","87943560");      //Usuario previamente registrado
         String User;
         String Pass;
         boolean Verificacion = false;
@@ -150,12 +148,10 @@ public class Cliente
         Pass = JOptionPane.showInputDialog("Digite su password: ");
         
         for(int i = 0; i < Contador; i++) {
-            if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {
+            if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {                
                 JOptionPane.showMessageDialog(null,"Datos correctos");
-                ID_UsuarioActual = i;
                 i = DatosUser.length;
                 Verificacion=true;
-               
             }else if((i+1) == Contador ) {
                 JOptionPane.showMessageDialog(null,"Usuario o contraseña incorrectos"
                                             + "\nIngrese nuevamente");
@@ -171,54 +167,55 @@ public class Cliente
     *   
     */
     
+    /*
     public void mostrarDatos() {
         JOptionPane.showMessageDialog(null, "Datos de usuario"
-                + "\nId de usuario" + ID_UsuarioActual 
-                + "\nNombre: " + DatosUser[ID_UsuarioActual].Nombre 
-                + "\nUsuario: " + DatosUser[ID_UsuarioActual].Usuario
-                + "\nCorreo: " + DatosUser[ID_UsuarioActual].Correo
-                + "\nTeléfono: " + DatosUser[ID_UsuarioActual].Teléfono
-                + "\nUbicacion: " + DatosUser[ID_UsuarioActual].Ubicación );
+                + "\nId de usuario: "  
+                + "\nNombre: " + DatosUser[].Nombre 
+                + "\nUsuario: " + DatosUser[].Usuario
+                + "\nCorreo: " + DatosUser[].Correo
+                + "\nTeléfono: " + DatosUser[].Teléfono
+                + "\nUbicacion: " + DatosUser[].Ubicación );
+         }
     }
+    */
     
     /** 
     * Este es el metodo que permite al cliente realizar compras de los diferentes
     * productos dentro de la App o bien acceder a realizar reclamo y realizar sugerencia.
     * 
-    * @return Option
     */
     
-    public int realizarAccion() {
+    public void realizarAccion() {
         Just_EatsCR MenElec = new Just_EatsCR();
         Cliente ClassCliente = new Cliente();
-        int Option=0;
+        String Option="";
         
         do {
-            Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
+            Option = JOptionPane.showInputDialog("         Just Eats               "
                                                            + "\nSeleccione un opción."
                                                            + "\n1. Realizar pedido"
                                                            + "\n2. Realizar reclamo" 
                                                            + "\n3. Realizar sugerencia"
-                                                           + "\n4. Revisar Info. de usuario" 
-                                                           + "\n0. Cerrar sesión"));
+                                                           //+ "\n4. Revisar Info. de usuario" 
+                                                           + "\n0. Cerrar sesión");
             switch(Option) {
-                case 1:
+                case "1":
                     MenElec.Elección_Restaurante();
                     break;
-                case 2:
+                case "2":
                     ClassCliente.realizarReclamo();
                     break;
-                case 3:
+                case "3":
                     ClassCliente.realizarSugerencia();
                     break;
-                case 4:
-                    ClassCliente.mostrarDatos();
+                case "4":
+                    //ClassCliente.mostrarDatos();
                     break;
                 default:
                     break;
             }
-        } while(Option!=0);
-        return Option;
+        } while(!Option.equals("0"));
     }
     
     /** 
@@ -230,22 +227,22 @@ public class Cliente
     public void realizarReclamo() {
         String Recl_Producto = "";
         String Recl_Pedido = "";
-        int    Option; 
+        String Option=""; 
         
         do {
-            Option = Integer.parseInt(JOptionPane.showInputDialog("         Just Eats               "
+            Option = JOptionPane.showInputDialog("         Just Eats               "
                                                            +"\nGracias por usar nuestro servicio"
                                                            +"\nPor favor indicar tipo de reclamo"
                                                            +"\n1. Reclamo sobre producto" 
                                                            +"\n2. Reclamo sobre pedido" 
-                                                           +"\n0. 0 para ir Atras"));
+                                                           +"\n0. 0 para ir Atras");
             switch(Option) {
-                case 1:
+                case "1":
                     Recl_Producto = JOptionPane.showInputDialog("Indique reclamo de producto");
                     JOptionPane.showMessageDialog(null, "Su reclamo será tomado en cuenta"
                                                        +"\n                       Gracias");
                     break;
-                case 2:
+                case "2":
                     Recl_Pedido = JOptionPane.showInputDialog("Indique reclamo de pedido");
                     JOptionPane.showMessageDialog(null, "Su reclamo será tomado en cuenta"
                                                        +"\n                       Gracias");
@@ -253,7 +250,7 @@ public class Cliente
                 default:
                     break;
             }
-        } while(Option!=0);
+        } while(!Option.equals("0"));
     }
     
     /** 
@@ -342,14 +339,5 @@ public class Cliente
     {
         this.Teléfono = Teléfono;
     }
-
-    public int getID_UsuarioActual() {
-        return ID_UsuarioActual;
-    }
-
-    public void setID_UsuarioActual(int ID_UsuarioActual) {
-        this.ID_UsuarioActual = ID_UsuarioActual;
-    }
-    
-    
+        
 }

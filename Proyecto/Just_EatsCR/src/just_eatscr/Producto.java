@@ -1,9 +1,9 @@
 /*
  * Producto
  *
- * @version 1.07
+ * @version 1.08
  *
- * Fecha 22-04-2021
+ * Fecha 28-04-2021
  *
  * Copyright (c) 
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * así como la cantidad, tamaño y el precio según sea el caso.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.07    22 de abril 2021
+ * @version     1.08    28 de abril 2021
  * @see         Class
  * @see         Promociones.
  * @see         Descuentos.
@@ -239,14 +239,14 @@ public class Producto
      * Este método ayuda al traslado de información, con ello podemos calcular el descuento.
      * @return Suma         Acá se retorna el valor en la variable Suma
      */
-    public double Suma ()
+    public double Suma()
     {    
-
         return Suma;
     }
     
     /** 
      * Getters y setters necesarios para la clase.
+     * 
      */
 
     public String getCodigo() {

@@ -1,9 +1,9 @@
 /*
  * Factura
  *
- * @version 1.06
+ * @version 1.07
  *
- * Fecha 22-04-2021
+ * Fecha 28-04-2021
  *
  * Copyright (c) 
  */
@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  * de Valor Agregado (I.V.A) y el total final.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.06    22 de abril 2021
+ * @version     1.07    28 de abril 2021
  * 
  */
 public class Factura 
@@ -70,22 +70,22 @@ public class Factura
      */
     
     public void metodoPago() {
-        int Option=0;
+        String Option="";
         
         do {
-            Option = Integer.parseInt(JOptionPane.showInputDialog("Metdo de cancelacion."
+            Option = JOptionPane.showInputDialog("Metdo de cancelacion."
                     + "\n1. Tarjeta."
-                    + "\n2. Efectivo"));
+                    + "\n2. Efectivo");
             
-            if (Option == 1) {
+            if (Option.contains("1")) {
                 Decisión = ("Tarjeta");
-                Option = 0;
-            }else if(Option == 2) {
+                Option = "0";
+            }else if(Option.contains("2")) {
                 Decisión = ("Efectivo");
-                Option = 0;
+                Option = "0";
             } 
             
-        }while(Option!=0);
+        }while(!Option.equals("0"));
         
     }
     
