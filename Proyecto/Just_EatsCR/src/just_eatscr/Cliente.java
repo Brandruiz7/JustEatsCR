@@ -1,9 +1,9 @@
 /*
  * Cliente
  *
- * @version 1.08
+ * @version 1.09
  *
- * Fecha 28-04-2021
+ * Fecha 29-04-2021
  *
  * Copyright (c) 
  */
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * el usuario y datos de inicio de Sesión en la app Just Eats.
  *   
  * @author      Brandon Ruiz, Kervin Ruiz, Christopher Hernandez
- * @version     1.08    28 de Abril 2021
+ * @version     1.09    29 de Abril 2021
  * 
 */
 
@@ -80,7 +80,7 @@ public class Cliente
     */
     
     public void registrarDatos(){
-        Cliente veriEmail = new Cliente();
+        Cliente verificacion = new Cliente();
         
         String nombre;
         String usuario;
@@ -93,10 +93,10 @@ public class Cliente
             
             nombre = JOptionPane.showInputDialog("Digite su nombre: ");
             usuario = JOptionPane.showInputDialog("Digite su alias de usuario: ");
-            password = JOptionPane.showInputDialog("Digite su password: ");
+            password = verificacion.verificarPass();
             Ubicacion = JOptionPane.showInputDialog("Digite su ubicación: ");
-            correo = veriEmail.verificarEmail();
-            teléfono = JOptionPane.showInputDialog("Digite su teléfono: ");
+            correo = verificacion.verificarEmail();
+            teléfono = verificacion.verificarTele();
             
             DatosUser[ID_Cliente+1] = new Cliente(nombre, usuario, password, Ubicacion, correo, teléfono );
             Contador++;
@@ -129,8 +129,53 @@ public class Cliente
                 JOptionPane.showMessageDialog(null,correoV + " Correo inválido");        
             }
         }
-        
         return correoV;
+    }
+    
+    /** 
+    * Este es el  metodo que permite verificar que la contraseña ingresado tenga formato adecuado.
+    * @return passV        Esta variable retorna el password correcto para ser almacenado  
+    */
+    
+    public String verificarPass()
+    {
+        boolean verificar=false;
+        String passV="";
+        
+        while(verificar == false) {
+            passV = JOptionPane.showInputDialog("Digite Password: ");
+            
+            if(passV.length() >= 8) {
+                JOptionPane.showMessageDialog(null,passV.substring(0,3) + "******* " + " password válido");
+                verificar=true;
+            } else {
+                JOptionPane.showMessageDialog(null,"Password inválido \nLongitud no valida \nDebe ser mayor a 8 caracteres");        
+            }
+        }
+        return passV;
+    }
+    
+    /** 
+    * Este es el  metodo que permite verificar que le numero telefonico ingresado tenga formato adecuado.
+    * @return passV        Esta variable retorna el password correcto para ser almacenado  
+    */
+    
+    public String verificarTele()
+    {
+        boolean verificar=false;
+        String teleV="";
+        
+        while(verificar == false) {
+            teleV = JOptionPane.showInputDialog("Digite su teléfono: ");
+            
+            if(teleV.length() == 8) {
+                JOptionPane.showMessageDialog(null,teleV.substring(0,4) +"-" + teleV.substring(4,8) + " Telefono válido");
+                verificar=true;
+            } else {
+                JOptionPane.showMessageDialog(null,"Telefono inválido \nLongitud no valida \nDebe ser de 8 digitos");        
+            }
+        }
+        return teleV;
     }
     
    /** 
@@ -148,7 +193,7 @@ public class Cliente
         Pass = JOptionPane.showInputDialog("Digite su password: ");
         
         for(int i = 0; i < Contador; i++) {
-            if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {                
+            if ((User.equals(DatosUser[i].Usuario)) && (Pass.equals(DatosUser[i].Password))) {  
                 JOptionPane.showMessageDialog(null,"Datos correctos");
                 i = DatosUser.length;
                 Verificacion=true;
@@ -171,12 +216,11 @@ public class Cliente
     public void mostrarDatos() {
         JOptionPane.showMessageDialog(null, "Datos de usuario"
                 + "\nId de usuario: "  
-                + "\nNombre: " + DatosUser[].Nombre 
-                + "\nUsuario: " + DatosUser[].Usuario
-                + "\nCorreo: " + DatosUser[].Correo
-                + "\nTeléfono: " + DatosUser[].Teléfono
-                + "\nUbicacion: " + DatosUser[].Ubicación );
-         }
+                + "\nNombre: " + Contador
+                + "\nUsuario: " + UsuarioActual[0].Usuario
+                + "\nCorreo: " + UsuarioActual[0].Correo
+                + "\nTeléfono: " + UsuarioActual[0].Teléfono
+                + "\nUbicacion: " + UsuarioActual[0].Ubicación );
     }
     */
     
