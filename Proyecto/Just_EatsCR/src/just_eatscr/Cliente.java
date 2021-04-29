@@ -157,7 +157,7 @@ public class Cliente
     
     /** 
     * Este es el  metodo que permite verificar que le numero telefonico ingresado tenga formato adecuado.
-    * @return passV        Esta variable retorna el password correcto para ser almacenado  
+    * @return teleV        Esta variable retorna el teléfono correcto para ser almacenado  
     */
     
     public String verificarTele()
@@ -205,30 +205,6 @@ public class Cliente
         }
         return Verificacion;
     }
-            
-   /** 
-    * Este es el método que permite al cliente mostrar sus datos guardados
-    * en el Sistema.
-    *   
-    */
-    
-    /*
-    public void mostrarDatos() {
-        JOptionPane.showMessageDialog(null, "Datos de usuario"
-                + "\nId de usuario: "  
-                + "\nNombre: " + Contador
-                + "\nUsuario: " + UsuarioActual[0].Usuario
-                + "\nCorreo: " + UsuarioActual[0].Correo
-                + "\nTeléfono: " + UsuarioActual[0].Teléfono
-                + "\nUbicacion: " + UsuarioActual[0].Ubicación );
-    }
-    */
-    
-    /** 
-    * Este es el metodo que permite al cliente realizar compras de los diferentes
-    * productos dentro de la App o bien acceder a realizar reclamo y realizar sugerencia.
-    * 
-    */
     
     public void realizarAccion() {
         Just_EatsCR MenElec = new Just_EatsCR();
@@ -241,7 +217,6 @@ public class Cliente
                                                            + "\n1. Realizar pedido"
                                                            + "\n2. Realizar reclamo" 
                                                            + "\n3. Realizar sugerencia"
-                                                           //+ "\n4. Revisar Info. de usuario" 
                                                            + "\n0. Cerrar sesión");
             switch(Option) {
                 case "1":
@@ -252,9 +227,6 @@ public class Cliente
                     break;
                 case "3":
                     ClassCliente.realizarSugerencia();
-                    break;
-                case "4":
-                    //ClassCliente.mostrarDatos();
                     break;
                 default:
                     break;

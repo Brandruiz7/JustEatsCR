@@ -73,7 +73,7 @@ public class Factura
         String Option="";
         
         do {
-            Option = JOptionPane.showInputDialog("Metdo de cancelacion."
+            Option = JOptionPane.showInputDialog("Método de cancelación."
                     + "\n1. Tarjeta."
                     + "\n2. Efectivo");
             
@@ -97,7 +97,6 @@ public class Factura
         
         JOptionPane.showMessageDialog(null, "            Just Eats CR              "
                                          + "\nResumen del pedido:"
-                                         + "\nN° Factura: " + Contador
                                          + "\nTotal: ¢"+Saldo
                                          + "\nImpuesto del Valor Agregado (IVA): ¢"+CálculoIVA
                                          + "\nEl total de compra realizada es: ¢"+Total
@@ -105,7 +104,6 @@ public class Factura
                                          + "\nEl pedido solicitado llegará en breve."
                                          + "\n          Gracias por preferirnos"
                                           + "");
-        Contador++;
         
     }
     
