@@ -74,7 +74,9 @@ public class Restaurantes
                     + "\n1. Pizza Hut"
                     + "\n2. Burger King"
                     + "\n3. Taco Bell"
-                    + "\n4. Helados Pops");
+                    + "\n4. Helados Pops"
+                    + "\n"
+                    + "\n0. Ir Atras");
             
             switch(Option) {
                 case "1":
