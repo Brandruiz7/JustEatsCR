@@ -128,7 +128,7 @@ public class Just_EatsCR
         
         do{
             Opcion = JOptionPane.showInputDialog("                Just Eats                "
-                                                           +"\nGracias por usar nuestro servicio, bienvenido"
+                                                           +"\nGdracias por usar nuestro servicio, bienvenido"
                                                            +"\n1. Iniciar sesión." 
                                                            +"\n2. Registrarse." 
                                                            +"\n0. 0 Salir de la App");
